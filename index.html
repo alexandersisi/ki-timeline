@@ -2,648 +2,322 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KI-Nutzen-Timeline | plan a · AI Solutions</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KI-Timeline | plan a · AI Solutions</title>
+<meta name="description" content="Timeline der wesentlichen KI Tools — Die wichtigsten Releases von ChatGPT, Gemini, Claude, Mistral, Meta/Llama & Microsoft Copilot. Januar 2025 bis März 2026 inkl. NVIDIA GTC 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --green: #2EAD60;
-  --green-light: #e8f7ee;
-  --green-dark: #1a7a3e;
-  --red: #E83946;
-  --violet: #5c1444;
-  --violet-light: #f3e6ee;
-  --bg: #ffffff;
-  --surface: #ffffff;
-  --text: #1a1a2e;
-  --text-secondary: #5a5a72;
-  --text-muted: #8a8a9a;
-  --border: #e8e8ec;
-  --border-light: #f0f0f4;
-  --cat-text: #2563EB;
-  --cat-text-bg: #EFF6FF;
-  --cat-bild: #EA580C;
-  --cat-bild-bg: #FFF7ED;
-  --cat-video: #16A34A;
-  --cat-video-bg: #F0FDF4;
-  --cat-code: #7C3AED;
-  --cat-code-bg: #F5F3FF;
-  --cat-tool: #CA8A04;
-  --cat-tool-bg: #FEFCE8;
-  --cat-multi: #DC2626;
-  --cat-multi-bg: #FEF2F2;
-  --cat-agent: #2563EB;
-  --cat-agent-bg: #EFF6FF;
-  --radius: 10px;
-  --radius-sm: 6px;
-  --radius-lg: 14px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
-  --shadow-md: 0 4px 16px rgba(0,0,0,.08);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
-  --transition: .2s cubic-bezier(.4,0,.2,1);
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Source Sans 3','Source Sans Pro',-apple-system,BlinkMacSystemFont,sans-serif;background:#f8fafc;color:#1a2332;line-height:1.5;min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;font-size:inherit}
+.ctr{max-width:820px;margin:0 auto;padding:0 24px}
 
-.container { max-width: 780px; margin: 0 auto; padding: 2rem 1.25rem; }
+/* HEADER */
+.hdr{background:#fff;border-bottom:1px solid #e2e8f0;padding:14px 0;position:sticky;top:0;z-index:100}
+.hdr .ctr{display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:700;font-size:20px}.logo em{color:#E83946;font-style:italic}
+.logo-s{color:#94a3b8;font-weight:400;font-size:14px;margin-left:6px}
+.hdr-date{font-size:12px;color:#94a3b8}
 
-/* Header */
-.header { text-align: center; margin-bottom: 2rem; }
-.header h1 {
-  font-size: 1.75rem; font-weight: 700; color: var(--text);
-  margin-bottom: .35rem; letter-spacing: -.02em;
-}
-.header h1 span { color: var(--green); }
-.header p { font-size: .9rem; color: var(--text-secondary); max-width: 560px; margin: 0 auto; line-height: 1.55; }
+/* HERO */
+.hero{background:linear-gradient(135deg,#2EAD60 0%,#239b50 100%);padding:48px 24px 40px;text-align:center}
+.hero h1{font-size:clamp(26px,5vw,42px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:12px}
+.hero p{margin:0}
+.hero .sub{color:rgba(255,255,255,.7);font-size:16px;max-width:640px;margin:0 auto 4px}
+.hero .dr{color:rgba(255,255,255,.45);font-size:14px}
+.hero-link{display:inline-block;margin-top:20px;padding:10px 24px;border:1.5px solid rgba(255,255,255,.5);border-radius:99px;color:#fff;font-size:14px;font-weight:600;transition:all .2s;text-decoration:none}
+.hero-link:hover{background:rgba(255,255,255,.15);border-color:#fff}
 
-/* Filter sections */
-.filter-section { margin-bottom: .75rem; }
-.filter-label {
-  font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
-  color: var(--text-muted); margin-bottom: .4rem; padding-left: .25rem;
-}
-.filters { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
-.filter-pill {
-  font-size: .75rem; padding: 5px 12px; border-radius: 20px; cursor: pointer;
-  font-weight: 500; border: 1.5px solid transparent; transition: all var(--transition);
-  user-select: none; white-space: nowrap;
-}
-.filter-pill:hover { transform: translateY(-1px); }
-.filter-pill.active { border-color: currentColor; box-shadow: var(--shadow-sm); }
+/* INTRO */
+.intro{background:#fff;border-radius:12px;border:1px solid #e2e8f0;padding:24px;margin:24px 0}
+.intro p{font-size:14px;color:#475569;line-height:1.7}
+.intro strong{color:#1a2332}
+.lt{display:inline-flex;align-items:center;gap:4px;font-size:13px;color:#94a3b8;cursor:pointer;margin-top:12px;user-select:none;transition:color .15s}
+.lt:hover{color:#64748b}
+.lg{display:none;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:12px}
+.lg.open{display:grid}
+.lg-i{font-size:12px;color:#64748b;padding:6px 10px;background:#f1f5f9;border-radius:6px;line-height:1.5}
+.lg-i strong{color:#334155}
 
-/* Role pills */
-.filter-pill[data-r="all"] { background: var(--border-light); color: var(--text-secondary); }
-.filter-pill[data-r="cxo"] { background: var(--violet-light); color: var(--violet); }
-.filter-pill[data-r="lead"] { background: var(--green-light); color: var(--green-dark); }
-.filter-pill[data-r="fach"] { background: var(--cat-text-bg); color: var(--cat-text); }
-.filter-pill[data-r="dev"] { background: var(--cat-code-bg); color: var(--cat-code); }
-.filter-pill[data-r="admin"] { background: var(--cat-tool-bg); color: var(--cat-tool); }
-.filter-pill[data-r="mktg"] { background: var(--cat-bild-bg); color: var(--cat-bild); }
+/* FILTERS */
+.fb{position:sticky;top:0;z-index:90;background:#f8fafc;padding:16px 0 12px}
+.fr{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.fr+.fr{margin-top:10px;gap:6px}
+.fb-btn{padding:6px 16px;border-radius:99px;border:1.5px solid #cbd5e1;background:#fff;color:#64748b;font-size:13px;font-weight:600;transition:all .15s;white-space:nowrap}
+.fb-btn:hover{border-color:#94a3b8}
+.fb-btn.act-all{border-color:#1a2332;background:#1a2332;color:#fff}
+.tb{padding:3px 12px;border-radius:99px;border:1px solid #e2e8f0;background:#fff;color:#94a3b8;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;transition:all .15s}
+.tb:hover{border-color:#94a3b8}
+.tb.act{border-color:#1a2332;background:#1a2332;color:#fff}
 
-/* Category pills */
-.filter-pill[data-c="all"] { background: var(--border-light); color: var(--text-secondary); }
-.filter-pill[data-c="text"] { background: var(--cat-text-bg); color: var(--cat-text); }
-.filter-pill[data-c="bild"] { background: var(--cat-bild-bg); color: var(--cat-bild); }
-.filter-pill[data-c="video"] { background: var(--cat-video-bg); color: var(--cat-video); }
-.filter-pill[data-c="code"] { background: var(--cat-code-bg); color: var(--cat-code); }
-.filter-pill[data-c="tool"] { background: var(--cat-tool-bg); color: var(--cat-tool); }
-.filter-pill[data-c="multi"] { background: var(--cat-multi-bg); color: var(--cat-multi); }
-.filter-pill[data-c="agent"] { background: var(--cat-agent-bg); color: var(--cat-agent); }
+/* PROVIDER COLORS - active filter buttons */
+.fb-btn[data-p="ChatGPT"].act{border-color:#2EAD60;background:rgba(46,173,96,.1);color:#1a8a48}
+.fb-btn[data-p="Gemini"].act{border-color:#4285F4;background:rgba(66,133,244,.1);color:#2b6ad0}
+.fb-btn[data-p="Claude"].act{border-color:#E8863A;background:rgba(232,134,58,.1);color:#c06a22}
+.fb-btn[data-p="Mistral"].act{border-color:#E83946;background:rgba(232,57,70,.1);color:#c52633}
+.fb-btn[data-p="Meta"].act{border-color:#5c1444;background:rgba(92,20,68,.1);color:#5c1444}
+.fb-btn[data-p="Copilot"].act{border-color:#0078D4;background:rgba(0,120,212,.1);color:#0060aa}
 
-.counter { text-align: center; font-size: .78rem; color: var(--text-muted); margin-bottom: 1.25rem; }
-.counter b { color: var(--green); font-weight: 600; }
+/* TIMELINE */
+.tl{padding-bottom:32px}
+.mg{margin-bottom:8px}
+.mh{display:flex;align-items:center;gap:12px;margin:28px 0 16px}
+.md{width:10px;height:10px;border-radius:50%;background:#2EAD60;flex-shrink:0}
+.mh h2{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#1a2332}
+.me{margin-left:22px}
+.empty{text-align:center;color:#94a3b8;padding:48px 0;font-size:14px}
 
-/* Timeline */
-.timeline { position: relative; padding-left: 110px; }
-.timeline-line {
-  position: absolute; left: 106px; top: 0; bottom: 0; width: 2px;
-  background: linear-gradient(to bottom, var(--green), var(--border), var(--border));
-}
+/* CARD */
+.cd{border-left:4px solid;border-radius:8px;padding:16px 20px;margin-bottom:12px;cursor:pointer;transition:box-shadow .2s}
+.cd:hover{box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.cd[data-p="ChatGPT"]{border-color:#2EAD60;background:rgba(46,173,96,.06)}
+.cd[data-p="Gemini"]{border-color:#4285F4;background:rgba(66,133,244,.06)}
+.cd[data-p="Claude"]{border-color:#E8863A;background:rgba(232,134,58,.06)}
+.cd[data-p="Mistral"]{border-color:#E83946;background:rgba(232,57,70,.06)}
+.cd[data-p="Meta"]{border-color:#5c1444;background:rgba(92,20,68,.06)}
+.cd[data-p="Copilot"]{border-color:#0078D4;background:rgba(0,120,212,.06)}
+.ct{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.cb{flex:1;min-width:0}
+.cm{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.cp{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.cd[data-p="ChatGPT"] .cp{color:#1a8a48}
+.cd[data-p="Gemini"] .cp{color:#2b6ad0}
+.cd[data-p="Claude"] .cp{color:#c06a22}
+.cd[data-p="Mistral"] .cp{color:#c52633}
+.cd[data-p="Meta"] .cp{color:#5c1444}
+.cd[data-p="Copilot"] .cp{color:#0060aa}
+.ctg{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#64748b;background:rgba(255,255,255,.6);padding:2px 8px;border-radius:99px}
+.cd h3{font-weight:700;font-size:16px;line-height:1.3;margin:4px 0 2px;color:#1a2332}
+.cs{font-size:13px;color:#64748b;line-height:1.4}
+.cx{font-size:18px;color:#94a3b8;flex-shrink:0;margin-top:4px;transition:transform .2s;line-height:1}
+.cd.open .cx{transform:rotate(45deg)}
+.dd{display:none;margin-top:16px;padding-top:14px;border-top:1px solid rgba(0,0,0,.06)}
+.cd.open .dd{display:block}
+.ds{margin-bottom:12px}.ds:last-child{margin-bottom:0}
+.dl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#64748b;margin-bottom:4px}
+.dt{font-size:13px;color:#334155;line-height:1.65}
 
-/* Month marker */
-.month-marker { position: relative; margin-bottom: 2px; }
-.month-label {
-  position: absolute; left: -110px; width: 96px; text-align: right;
-  font-size: .78rem; font-weight: 600; color: var(--text-muted); padding-top: 8px;
-}
-.month-dot {
-  position: absolute; left: -7px; top: 10px; width: 12px; height: 12px;
-  border-radius: 50%; background: var(--surface); border: 2.5px solid var(--green); z-index: 2;
-}
+/* FAZIT */
+.fz{background:linear-gradient(135deg,#2EAD60 0%,#239b50 100%);border-radius:12px;padding:32px 28px;margin:8px 0 40px;color:#fff}
+.fz h2{font-size:20px;font-weight:700;margin-bottom:20px}
+.fi{display:flex;gap:14px;margin-bottom:18px}.fi:last-child{margin-bottom:0}
+.fn{font-size:26px;font-weight:900;color:#fff;line-height:1;flex-shrink:0;opacity:.7}
+.fi h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.fi p{font-size:13px;color:rgba(255,255,255,.7);line-height:1.6}
 
-/* Phase marker */
-.phase {
-  margin: 12px 0 6px 20px; padding: 10px 14px; border-radius: var(--radius-sm);
-  background: var(--green-light); border-left: 3px solid var(--green);
-}
-.phase-title { font-size: .85rem; font-weight: 600; color: var(--text); }
-.phase-sub { font-size: .75rem; color: var(--text-secondary); margin-top: 1px; }
+/* FOOTER */
+.ft{text-align:center;padding:0 0 36px;font-size:12px;color:#94a3b8;line-height:1.9}
+.ft a{color:#2EAD60;font-weight:600}
+.ft .mu{color:#cbd5e1}
 
-/* Entry */
-.entry {
-  margin: 4px 0 4px 20px; padding: 12px 14px; border-radius: var(--radius);
-  border-left: 3px solid; cursor: pointer; transition: all var(--transition);
-  background: var(--surface); box-shadow: var(--shadow-sm);
-}
-.entry:hover { transform: translateX(4px); box-shadow: var(--shadow-md); }
-.entry.hidden { display: none; }
-.entry[data-c="text"]  { border-color: var(--cat-text); }
-.entry[data-c="bild"]  { border-color: var(--cat-bild); }
-.entry[data-c="video"] { border-color: var(--cat-video); }
-.entry[data-c="code"]  { border-color: var(--cat-code); }
-.entry[data-c="tool"]  { border-color: var(--cat-tool); }
-.entry[data-c="multi"] { border-color: var(--cat-multi); }
-.entry[data-c="agent"] { border-color: var(--cat-agent); }
-
-.entry-head { display: flex; align-items: center; gap: 8px; }
-.entry-nr { font-size: .7rem; font-weight: 600; color: var(--text-muted); min-width: 20px; }
-.entry-title { font-size: .85rem; font-weight: 600; color: var(--text); flex: 1; line-height: 1.35; }
-.entry-badges { display: flex; gap: 4px; align-items: center; flex-shrink: 0; }
-
-.cat-tag {
-  font-size: .65rem; padding: 2px 8px; border-radius: 10px; font-weight: 600; color: #fff;
-  white-space: nowrap;
-}
-.cat-tag[data-c="text"]  { background: var(--cat-text); }
-.cat-tag[data-c="bild"]  { background: var(--cat-bild); }
-.cat-tag[data-c="video"] { background: var(--cat-video); }
-.cat-tag[data-c="code"]  { background: var(--cat-code); }
-.cat-tag[data-c="tool"]  { background: var(--cat-tool); color: #5a4200; }
-.cat-tag[data-c="multi"] { background: var(--cat-multi); }
-.cat-tag[data-c="agent"] { background: var(--cat-agent); }
-
-.role-icons { display: flex; gap: 2px; }
-.role-icon { transition: opacity var(--transition); }
-.role-icon:hover { opacity: 1 !important; }
-.role-icon svg { display: block; }
-.filter-pill-icon { color: inherit; display: inline-block; vertical-align: middle; margin-right: 4px; }
-
-.entry-detail { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-.entry.open .entry-detail { max-height: 320px; }
-
-.entry-desc {
-  font-size: .82rem; color: var(--text-secondary); margin: 10px 0 6px;
-  line-height: 1.6; padding-left: 28px;
-}
-.entry-tools {
-  display: flex; flex-wrap: wrap; gap: 5px; align-items: center;
-  padding-left: 28px; margin-bottom: 4px;
-}
-.entry-tools-label { font-size: .72rem; color: var(--text-muted); font-weight: 500; }
-.tool-chip {
-  display: inline-block; font-size: .72rem; padding: 3px 10px; border-radius: 14px;
-  background: var(--green-light); color: var(--green-dark); border: .5px solid var(--green);
-  cursor: pointer; font-weight: 500; transition: all var(--transition);
-}
-.tool-chip:hover { background: var(--green); color: #fff; transform: scale(1.05); }
-.entry-level { font-size: .78rem; padding-left: 28px; letter-spacing: 1px; color: var(--cat-tool); }
-.entry-roles-detail {
-  font-size: .72rem; color: var(--text-muted); padding-left: 28px; margin-top: 4px;
-}
-
-/* Overlay (model timeline) */
-.overlay {
-  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 999; background: rgba(0,0,0,.5); backdrop-filter: blur(4px);
-  align-items: center; justify-content: center; padding: 1rem;
-}
-.overlay.visible { display: flex; }
-.overlay-panel {
-  background: var(--surface); border-radius: var(--radius-lg);
-  border: .5px solid var(--border); width: 100%; max-width: 640px;
-  max-height: 82vh; overflow-y: auto; padding: 1.5rem; position: relative;
-  box-shadow: var(--shadow-lg);
-}
-.overlay-panel h3 {
-  font-size: 1.15rem; font-weight: 700; color: var(--text); margin: 0 0 4px;
-}
-.overlay-close {
-  position: absolute; top: 12px; right: 16px; font-size: 1.4rem; cursor: pointer;
-  color: var(--text-muted); line-height: 1; width: 28px; height: 28px;
-  display: flex; align-items: center; justify-content: center; border-radius: 50%;
-  transition: all var(--transition);
-}
-.overlay-close:hover { background: var(--border-light); color: var(--text); }
-.overlay-desc { font-size: .82rem; color: var(--text-secondary); margin: 0 0 1rem; line-height: 1.5; }
-
-.model-table { width: 100%; border-collapse: collapse; }
-.model-table th {
-  text-align: left; font-size: .7rem; font-weight: 600; color: var(--text-muted);
-  padding: 8px 10px; border-bottom: 1.5px solid var(--border);
-  text-transform: uppercase; letter-spacing: .05em;
-}
-.model-table td {
-  font-size: .82rem; padding: 8px 10px; border-bottom: .5px solid var(--border-light);
-  color: var(--text); vertical-align: top;
-}
-.model-table tr:last-child td { border-bottom: none; }
-.model-table .date-col { color: var(--text-muted); white-space: nowrap; width: 85px; font-size: .78rem; }
-.model-table .name-col { font-weight: 600; color: var(--green-dark); }
-.model-table .desc-col { color: var(--text-secondary); font-size: .78rem; }
-
-/* Footer */
-.footer {
-  text-align: center; margin-top: 2.5rem; padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
-}
-.footer p { font-size: .78rem; color: var(--text-muted); }
-.footer a { color: var(--green); text-decoration: none; font-weight: 600; }
-.footer a:hover { text-decoration: underline; }
-
-/* Intro box */
-.intro-box {
-  margin-bottom: 1.25rem; border: 1px solid var(--border); border-radius: var(--radius);
-  background: var(--surface); overflow: hidden;
-}
-.intro-toggle {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 12px 16px; cursor: pointer; user-select: none;
-}
-.intro-toggle:hover { background: var(--border-light); }
-.intro-toggle-label { font-size: .85rem; font-weight: 600; color: var(--green-dark); }
-.intro-toggle-icon {
-  font-size: 1.2rem; font-weight: 500; color: var(--text-muted);
-  transition: transform var(--transition);
-}
-.intro-box.open .intro-toggle-icon { transform: rotate(45deg); }
-.intro-content {
-  max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s ease;
-  padding: 0 16px;
-}
-.intro-box.open .intro-content { max-height: 600px; padding: 0 16px 16px; }
-.intro-content p { font-size: .82rem; color: var(--text-secondary); line-height: 1.6; }
-
-/* Role description */
-.role-description {
-  max-height: 0; overflow: hidden; transition: max-height .35s ease, margin .3s ease, padding .3s ease;
-  margin: 0; padding: 0 16px; border-radius: var(--radius);
-  background: var(--surface); border-left: 3px solid var(--green);
-}
-.role-description.visible {
-  max-height: 200px; margin: 0 0 1rem; padding: 14px 16px;
-  border: 1px solid var(--border); border-left: 3px solid var(--green);
-}
-.role-description .role-desc-title {
-  font-size: .85rem; font-weight: 600; color: var(--text); margin: 0 0 6px;
-  display: flex; align-items: center; gap: 6px;
-}
-.role-description .role-desc-title svg { width: 18px; height: 18px; }
-.role-description .role-desc-text {
-  font-size: .82rem; color: var(--text-secondary); line-height: 1.6; margin: 0;
-}
-
-@media (max-width: 600px) {
-  .container { padding: 1rem .75rem; }
-  .timeline { padding-left: 70px; }
-  .timeline-line { left: 66px; }
-  .month-label { left: -70px; width: 56px; font-size: .68rem; }
-  .month-dot { left: -7px; }
-  .entry { margin-left: 14px; padding: 10px 10px; }
-  .phase { margin-left: 14px; }
-  .entry-desc, .entry-tools, .entry-level, .entry-roles-detail { padding-left: 0; }
-  .role-icons { display: none; }
-}
+@media(max-width:600px){.ctr{padding:0 16px}.hero{padding:36px 16px 32px}.cd h3{font-size:15px}.me{margin-left:14px}.fb{top:0}.fz{padding:24px 20px}}
 </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="header">
-    <h1>KI-<span>Nutzen</span>-Timeline</h1>
-    <p>Wie hat sich der konkrete Nutzen von KI für Anwender über die Zeit entwickelt? Diese interaktive Timeline zeigt 56 Tätigkeiten, die durch KI produktiv nutzbar wurden.</p>
-  </div>
-
-  <div class="intro-box" id="intro-box">
-    <div class="intro-toggle" onclick="document.getElementById('intro-box').classList.toggle('open')">
-      <span class="intro-toggle-label">So funktioniert diese Timeline</span>
-      <span class="intro-toggle-icon" id="intro-icon">+</span>
-    </div>
-    <div class="intro-content">
-      <p>Diese Timeline dokumentiert <b>56 konkrete Tätigkeiten</b>, die durch KI-Tools für Anwender produktiv nutzbar wurden — von einfachen Textumformulierungen (November 2022) bis hin zu autonomen Agenten, die ganze Workflows übernehmen (2025/2026).</p>
-      <p style="margin-top:.5rem"><b>Chronologische Sortierung:</b> Die neuesten Entwicklungen stehen oben, die ältesten unten. Jeder Eintrag zeigt, ab wann eine Tätigkeit für den durchschnittlichen Nutzer praktisch einsetzbar wurde — nicht wann die Technologie theoretisch existierte.</p>
-      <p style="margin-top:.5rem"><b>Zwei Filterebenen:</b></p>
-      <p style="margin-top:.25rem"><span style="color:var(--green);font-weight:600">Rolle / Zielgruppe</span> — Wähle deine Rolle (z.B. Führungskraft, Entwickler, Marketing), um nur die Tätigkeiten zu sehen, die für dich relevant sind. Zu jeder Rolle erscheint eine kurze Einordnung, wie KI diese Rolle heute unterstützt.</p>
-      <p style="margin-top:.25rem"><span style="color:var(--green);font-weight:600">Kategorie</span> — Filtere nach Art der Tätigkeit: Text, Bild, Video/Audio, Code, Tool-Integration, Multimodal oder Agenten-Automatisierung.</p>
-      <p style="margin-top:.5rem"><b>Details und Modell-Timelines:</b> Klicke auf einen Eintrag, um eine Beschreibung und die relevanten KI-Tools zu sehen. Klicke auf einen <span class="tool-chip" style="cursor:default;font-size:.72rem;padding:2px 8px">Tool-Namen</span>, um die komplette Entwicklungs-Timeline dieses Anbieters zu öffnen — so siehst du, wie sich z.B. ChatGPT, Claude oder Gemini über die Jahre entwickelt haben.</p>
-      <p style="margin-top:.5rem"><b>Die Rollen-Icons</b> rechts neben jedem Eintrag zeigen auf einen Blick, für welche Zielgruppen die jeweilige Tätigkeit relevant ist.</p>
-    </div>
-  </div>
-
-  <div class="role-description" id="role-desc"></div>
-
-  <div class="filter-section">
-    <div class="filter-label" style="text-align:center">Rolle / Zielgruppe</div>
-    <div class="filters" id="role-filters"></div>
-  </div>
-  <div class="filter-section">
-    <div class="filter-label" style="text-align:center">Kategorie</div>
-    <div class="filters" id="cat-filters"></div>
-  </div>
-  <div class="counter" id="counter"></div>
-
-  <div class="timeline">
-    <div class="timeline-line"></div>
-    <div id="tl"></div>
-  </div>
-
-  <div class="footer">
-    <p>Eine Perspektive von <a href="https://www.plan-a-consulting.ai" target="_blank">plan a · AI Solutions</a></p>
-    <p style="margin-top:4px">Technologie-Timeline: <a href="https://www.plan-a-consulting.ai/ki-timeline" target="_blank">KI-Modelle im Überblick</a></p>
-  </div>
+<section class="hero"><h1>Timeline der wesentlichen KI&nbsp;Tools</h1><p class="sub">Die wichtigsten Releases von ChatGPT, Gemini, Claude, Mistral, Meta/Llama &amp; Microsoft&nbsp;Copilot</p><p class="dr">Januar 2025 — März 2026 (inkl. NVIDIA GTC 2026)</p><a href="#learnings" class="hero-link">↓ 3 Learnings aus 15 Monaten KI-Entwicklung</a></section>
+<div class="ctr">
+<div class="intro">
+<p>Diese Timeline zeigt die wichtigsten Produkt-Releases der sechs führenden KI-Anbieter seit Januar 2025 — nicht jedes Update, sondern die <strong>Meilensteine, die für den Arbeitsalltag relevant sind</strong>. Jeder Eintrag erklärt, was passiert ist und was es für Anwender bedeutet.</p>
+<div class="lt" id="lt"><span id="la">▸</span> Was bedeuten die Kategorien?</div>
+<div class="lg" id="lg">
+<div class="lg-i"><strong>Modell</strong>: Neues oder verbessertes KI-Basismodell</div>
+<div class="lg-i"><strong>Coding</strong>: Programmierfähigkeiten &amp; Entwicklertools</div>
+<div class="lg-i"><strong>Workflow</strong>: Integration in Arbeitsabläufe &amp; Produktivität</div>
+<div class="lg-i"><strong>Multimodal</strong>: Text + Bild + Audio + Video</div>
+<div class="lg-i"><strong>Browser</strong>: Web-Navigation &amp; Interaktion</div>
+<div class="lg-i"><strong>Kontext</strong>: Kontextfenster-Erweiterungen</div>
+<div class="lg-i"><strong>Recherche</strong>: Autonome Informationsrecherche</div>
+<div class="lg-i"><strong>Agent</strong>: Eigenständig handelnde KI-Agenten</div>
 </div>
-
-<div class="overlay" id="overlay" onclick="if(event.target===this)closeOverlay()">
-  <div class="overlay-panel" id="overlay-panel"></div>
+</div>
+<div class="fb" id="fb"><div class="fr" id="pf"></div><div class="fr" id="tf"></div></div>
+<div class="tl" id="tl"></div>
+<div class="fz" id="learnings">
+<h2>Die drei großen Trends aus 15 Monaten KI-Entwicklung</h2>
+<div class="fi"><span class="fn">1</span><div><h3>KI wird zum Agenten — jetzt auch im Enterprise</h3><p>Von passiven Chatbots zu eigenständig handelnden Agenten: Computer Use, Browser-Agenten (Operator, Mariner), Coding-Agenten (Codex, Claude Code), Copilot Agent 365 und NVIDIAs NemoClaw. Die GTC 2026 hat gezeigt: Autonome Agenten sind produktionsreif.</p></div></div>
+<div class="fi"><span class="fn">2</span><div><h3>Multi-Modell wird Standard</h3><p>Microsoft setzt in Wave 3 auf Claude + OpenAI gleichzeitig. Gemini durchdringt Google Workspace. Unternehmen sind nicht mehr auf einen Anbieter festgelegt — die beste KI für jede Aufgabe wird automatisch gewählt.</p></div></div>
+<div class="fi"><span class="fn">3</span><div><h3>Open Source &amp; EU schließen auf</h3><p>Llama 4 (10M Kontext), Mistral Small 4 mit Forge-Training, Devstral 2 auf SWE-bench-Platz 1: Europäische und Open-Source-Modelle erreichen Frontier-Niveau. Mit Mistral Forge können Unternehmen erstmals eigene Modelle auf proprietären Daten trainieren.</p></div></div>
+</div>
+<footer class="ft">
+<p><a href="https://www.plan-a-consulting.ai">plan a</a> · Beratung für Organisations- und Personalentwicklung</p>
+<p>Zuletzt aktualisiert: 22. März 2026 (inkl. NVIDIA GTC 2026) — Angaben beziehen sich auf den Monat des öffentlichen Launches.</p>
+<p class="mu">Preview- und Beta-Termine können abweichen. Keine Gewähr für Vollständigkeit.</p>
+</footer>
 </div>
 
 <script>
-const CAT_LABELS = {text:'Text',bild:'Bild',video:'Video / Audio',code:'Code',tool:'Tool-Integration',multi:'Multimodal',agent:'Agenten'};
-const ROLE_LABELS = {all:'Alle Rollen',cxo:'GF / C-Level',lead:'Führungskräfte',fach:'Wissensarbeiter',dev:'Entwickler / IT',mktg:'Marketing / PM',admin:'Assistenz / Admin'};
-const ROLE_ABBR = {cxo:'C',lead:'FK',fach:'FA',dev:'IT',mktg:'MK',admin:'AS'};
-const ROLE_SVG = {
-  cxo: '<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="12" cy="5.5" r="4"/><path d="M4 22v-3c0-3.3 2.7-6 6-6h4c3.3 0 6 2.7 6 6v3H4z"/></svg>',
-  lead: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="6.5" r="3.2"/><path d="M2 21v-2.5a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4V21"/><circle cx="18" cy="7.5" r="2.8"/><path d="M22 21v-2a3.5 3.5 0 0 0-3-3.5"/></svg>',
-  fach: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="16" y2="7"/><line x1="9" y1="11" x2="14" y2="11"/></svg>',
-  dev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="7.5 6 1.5 12 7.5 18"/><polyline points="16.5 6 22.5 12 16.5 18"/><line x1="14.5" y1="3" x2="9.5" y2="21" stroke-width="1.8"/></svg>',
-  mktg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 3L2 10l7 3.5L22 3z"/><path d="M9 13.5V20l3.5-3.5"/><path d="M9 13.5L22 3"/></svg>',
-  admin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="13" width="4" height="6" rx="1.5"/><rect x="18" y="13" width="4" height="6" rx="1.5"/><path d="M6 19v1a2 2 0 0 0 2 2h2"/><circle cx="12" cy="22" r="1.5" fill="currentColor" stroke="none"/></svg>'
-};
+const D=[
+// ─── MÄR 2026 (Woche 3: GTC & neue Releases) ───
+{m:"MÄR 2026",p:"Copilot",t:"M365 Copilot Wave 3 — Multi-Modell & Agent 365",s:"Claude + OpenAI-Modelle in M365, Agent 365 GA, Copilot Cowork Preview, E7 Frontier Suite",g:["Agent","Workflow"],w:"Microsoft kündigte am 9.\u00A0März Wave 3 an: M365 Copilot nutzt jetzt mehrere Modelle (Claude + OpenAI), Agent 365 wird allgemein verfügbar, und die neue E7 Frontier Suite (ab Mai) bringt erweiterte Agenten-Fähigkeiten. Copilot Cowork startet als Research Preview für autonome Aufgabenbearbeitung.",n:"Unternehmen bekommen Multi-Modell-KI direkt in ihren M365-Tools — mit autonomen Agenten, die Aufgaben eigenständig über Word, Excel und Outlook hinweg erledigen."},
+{m:"MÄR 2026",p:"Gemini",t:"Gemini in Workspace — Help me create & Drive AI Overview",s:"Dokumentenerstellung per Prompt, stilkonsistentes Schreiben, dateiübergreifende Suche",g:["Workflow","Recherche","Kontext"],w:"Google erweiterte am 10.\u00A0März die Gemini-Integration in Workspace: 'Help me create' erstellt Dokumente aus einem Satz, 'Match writing style' übernimmt den Schreibstil, und Drive AI Overview durchsucht alle Dateien gleichzeitig.",n:"Wissensarbeiter können Dokumente, Präsentationen und Recherchen aus einem Prompt erstellen — über alle Google-Workspace-Dateien hinweg."},
+{m:"MÄR 2026",p:"Claude",t:"Claude Partner Network — 100\u00A0Mio.\u00A0$ für Enterprise-Adoption",s:"Accenture, Deloitte, Cognizant und Infosys als Partner",g:["Workflow","Agent"],w:"Anthropic startete am 12.\u00A0März das Claude Partner Network mit 100\u00A0Mio.\u00A0$ Investition: dedizierte Implementierungspfade für Großunternehmen mit Beratungspartnern wie Accenture, Deloitte und Cognizant.",n:"Enterprise-Kunden bekommen strukturierte Unterstützung bei der Claude-Einführung — ein Signal, dass Anthropic aggressiv in den Enterprise-Markt drängt."},
+{m:"MÄR 2026",p:"Mistral",t:"Mistral Small 4 & Forge — Enterprise-Training auf eigenen Daten",s:"119B MoE, 256K Kontext, Apache 2.0, eigene Modelle trainieren",g:["Modell","Workflow","Agent"],w:"Am 17.\u00A0März (GTC) stellte Mistral Small 4 vor: 119B Parameter (6B aktiv), vereint Reasoning, Vision und Coding in einem Modell. Dazu Mistral Forge: eine Enterprise-Plattform zum Training eigener Modelle auf proprietären Daten.",n:"Europäische Unternehmen können erstmals eigene KI-Modelle auf ihren Daten trainieren — ohne Vendor Lock-in, komplett selbst gehostet, Apache 2.0."},
+{m:"MÄR 2026",p:"Meta",t:"GTC: Llama 4 Maverick & Scout — 10M Kontext für alle",s:"Nativ multimodal, MoE, Open Source, auf Hugging Face verfügbar",g:["Modell","Multimodal","Kontext"],w:"Meta präsentierte auf der GTC Llama 4: Maverick (400B MoE, 17B aktiv) und Scout mit 10M Token Kontextfenster. Beide nativ multimodal, Open Source, auf Hugging Face. Scout schlägt Gemini 2.0 Flash-Lite in Benchmarks.",n:"Das größte Kontextfenster aller Open-Source-Modelle: ganze Codebasen, Dokumentensammlungen oder stundenlange Transkripte in einem Prompt — ohne Cloud-Abhängigkeit."},
+{m:"MÄR 2026",p:"Copilot",t:"NVIDIA GTC: Vera Rubin Platform & Groq 3 LPU",s:"7 neue Chips, 35x Effizienz, NemoClaw für autonome Agenten",g:["Agent","Modell"],w:"NVIDIA stellte auf der GTC (16.–19.\u00A0März, San Jose) die Vera Rubin Platform vor: sieben neue Chips mit 35x höherem Durchsatz pro Megawatt. Dazu NemoClaw: eine Enterprise-Plattform für autonome KI-Agenten. Groq 3 LPU als spezialisierter Inference-Chip integriert.",n:"Die nächste Generation der KI-Infrastruktur macht Enterprise-Agenten wirtschaftlich — autonome Systeme, die eigenständig Aufgaben abarbeiten, werden für Unternehmen erschwinglich."},
 
-const ROLE_DESCRIPTIONS = {
-  cxo: 'KI ist für Geschäftsführung und C-Level heute ein strategisches Steuerungsinstrument. Sie ermöglicht es, in Minuten tiefgehende Markt- und Wettbewerbsanalysen zu erstellen, komplexe Entscheidungsvorlagen auf Knopfdruck zu generieren und hunderte Seiten an Berichten, Verträgen oder Studien in Kernaussagen zu verdichten. Führungsentscheidungen werden schneller, fundierter und datengestützter — ohne auf Zuarbeit warten zu müssen.',
-  lead: 'Für Führungskräfte ist KI zum alltäglichen Produktivitätspartner geworden. Meeting-Protokolle werden automatisch erstellt, Präsentationen und Konzepte entstehen in einem Bruchteil der bisherigen Zeit, und Teams können mit personalisierten KI-Assistenten ausgestattet werden. KI unterstützt dabei, Informationen schneller zu verarbeiten, Entscheidungen vorzubereiten und die eigene Kommunikation zu schärfen — mehr Zeit für Führung, weniger für Verwaltung.',
-  fach: 'Wissensarbeiter profitieren am breitesten von KI. Von der täglichen E-Mail über Recherche und Datenanalyse bis zur Erstellung kompletter Dokumente — kaum eine Tätigkeit, die KI nicht beschleunigt oder qualitativ verbessert. Besonders wirkungsvoll: die Fähigkeit, große Datenmengen zu analysieren, mehrere Dokumente gleichzeitig zu vergleichen und strukturierte Ergebnisse zu liefern, die früher Stunden oder Tage gebraucht hätten.',
-  dev: 'Für Entwickler und IT hat KI die Arbeit grundlegend verändert. Code wird nicht mehr Zeile für Zeile geschrieben, sondern in natürlicher Sprache beschrieben und von KI generiert. Autonome Coding-Agenten erstellen Pull Requests, schreiben Tests und debuggen eigenständig. Ganze Softwareprojekte können durch Anweisungen im Terminal entstehen. Die Produktivitätssteigerung ist in kaum einer anderen Rolle so messbar wie hier.',
-  mktg: 'Marketing und Produktmanagement erleben durch KI einen kreativen Quantensprung. Professionelle Bilder, Videos und Texte entstehen in Sekunden statt Tagen. Marktrecherchen laufen automatisiert, Produktbeschreibungen werden direkt aus Fotos generiert, und Social-Media-Content lässt sich in beliebigen Tonalitäten und Sprachen produzieren. KI wird zum kreativen Co-Piloten, der Ideen beschleunigt und Produktionskosten senkt.',
-  admin: 'Für Assistenz und Administration ist KI ein stiller Effizienz-Turbo. Rechnungen und Formulare werden automatisch ausgelesen, E-Mails im richtigen Ton vorformuliert, Meeting-Protokolle erstellt und Dokumente formatiert — alles Tätigkeiten, die bisher viel manuelle Zeit gekostet haben. KI übernimmt zunehmend repetitive Aufgaben und schafft Freiraum für die Dinge, die menschliches Urteilsvermögen erfordern.'
-};
+// ─── MÄR 2026 (Woche 1) ───
+{m:"MÄR 2026",p:"ChatGPT",t:"GPT-5.4 — effizientestes Frontier-Modell mit Agent-Fähigkeiten",s:"Thinking Mode, 1M Kontext, Computer Use, Excel-Integration",g:["Modell","Coding","Workflow","Agent"],w:"OpenAI veröffentlichte GPT-5.4 am 5.\u00A0März 2026: das effizienteste Frontier-Modell mit Thinking Mode, 1M Token Kontext, Computer Use (Desktop-Steuerung) und nativer Excel/Sheets-Integration. Auf GDPval — einem Test, der misst, wie gut KI professionelle Wissensarbeit erledigt — schlägt es 83\u00A0% der menschlichen Fachleute.",n:"Agent-Fähigkeiten erreichen ein neues Level: GPT-5.4 kann eigenständig am PC arbeiten, Tabellen ausfüllen und mehrstufige Aufgaben über Stunden ausführen — der bisher mächtigste KI-Assistent für professionelle Arbeit."},
+{m:"MÄR 2026",p:"Copilot",t:"ChatGPT for Excel — KI nativ in Spreadsheets",s:"GPT-5.4-powered Excel Add-in, Finanzmodelle per Sprache, FactSet-Integration",g:["Workflow","Agent"],w:"Microsoft und OpenAI veröffentlichten ChatGPT for Excel als Beta: ein Add-in, das GPT-5.4 direkt in Excel-Arbeitsmappen bringt. Dazu neue Finanz-Datenintegrationen (FactSet, Dow Jones, S&P Global) für Enterprise-Nutzer.",n:"Finanzmodelle, Szenarioanalysen und Datenauswertungen per natürlicher Sprache direkt in Excel — ohne Formelkenntnisse. Ein Meilenstein für die KI-Integration in bestehende Arbeitstools."},
+{m:"MÄR 2026",p:"Mistral",t:"Devstral 2 — Coding-Spezialist mit 123B & 24B",s:"Open Source, SWE-bench-Spitze, Mistral Vibe CLI für lokale Agenten",g:["Coding","Modell"],w:"Mistral veröffentlichte Devstral 2: Devstral Large (123B MoE) und Devstral Small (24B) — beide Open Source unter Apache 2.0. Devstral Large führt SWE-bench Verified an. Dazu Mistral Vibe CLI: ein lokaler Coding-Agent auf eigener Hardware.",n:"Frontier-Coding auf eigener Hardware ohne Cloud-Abhängigkeit. Devstral + Vibe CLI ermöglichen vollständig lokale, datenschutzkonforme Software-Entwicklung mit KI."},
 
-const PHASES = [
-  {month:'Mär 2026',title:'Phase 7: Autonome Agenten & Workflows',sub:'Coding Agents, Browser Agents, Computer Use'},
-  {month:'2025',title:'Phase 6: Deep Research & Dokument-Erstellung',sub:'Computer Use, MCP, Deep Research'},
-  {month:'Jun 2024',title:'Phase 5: Multimodalität wird Alltag',sub:'GPT-4o, Claude 3.5, Bild- & Sprachverständnis'},
-  {month:'Jan 2024',title:'Phase 4: Integration in den Arbeitsalltag',sub:'M365 Copilot, Claude 3, Gemini 1.5'},
-  {month:'Okt 2023',title:'Phase 3: Personalisierung & Bildqualität',sub:'DALL·E 3, Custom GPTs, 128k Kontext'},
-  {month:'Mär 2023',title:'Phase 2: Erste echte Arbeitshilfe',sub:'GPT-4, Claude 1, Midjourney v5'},
-  {month:'Nov 2022',title:'Phase 1: Erste Gehversuche',sub:'ChatGPT GPT-3.5 — Staunen und Spielen'}
+// ─── FEB 2026 ───
+{m:"FEB 2026",p:"ChatGPT",t:"GPT-5 — breites GA-Rollout",s:"Multimodales Powerhouse — Text, Bild, Audio, Video in einem Modell",g:["Modell","Multimodal"],w:"Nach dem Soft-Launch Ende 2024 wurde GPT-5 breit ausgerollt — das erste vollständig multimodale Basismodell von OpenAI.",n:"Ein Modell für alles: Nutzer können in einer Konversation beliebig zwischen Text, Bild, Audio und Video wechseln."},
+{m:"FEB 2026",p:"Claude",t:"Claude Opus 4.6 — Coding-Champion mit 1M Kontext",s:"Besseres Coding, längere Agenten-Tasks, 1M Token Kontext (Beta)",g:["Modell","Coding","Kontext"],w:"Anthropic veröffentlichte die Claude-4.6-Familie mit Opus 4.6 als Flaggschiff: deutlich verbessertes Coding, längere autonome Tasks und 1M Token Kontext in der Beta.",n:"Ganze Codebasen oder lange Berichte in einem Prompt analysieren — ideal für komplexe Projekte, die Überblick und Tiefe gleichzeitig erfordern."},
+{m:"FEB 2026",p:"Mistral",t:"Voxtral Transcribe 2 — Echtzeit-ASR mit Diarization",s:"Batch + Realtime, Sprechererkennung, Open Source (Mini)",g:["Workflow","Multimodal"],w:"Mistral brachte Voxtral Transcribe 2 mit Echtzeit-Transkription und Sprechererkennung (Diarization). Batch- und Realtime-Modus, Open-Source-Mini-Variante.",n:"Meetings und Podcasts automatisch mit Sprecherzuordnung transkribieren — lokal betreibbar und datenschutzkonform."},
+{m:"FEB 2026",p:"Gemini",t:"Gemini 3.1 Pro — kompaktere Architektur",s:"Effizienter als Vorgänger bei gleichem Leistungsniveau",g:["Modell"],w:"Google veröffentlichte Gemini 3.1 Pro mit verbessertem Reasoning und kompakterer Architektur.",n:"Schnellere, günstigere Antworten — besonders relevant für Teams, die Gemini über die Google-Workspace-Integration nutzen."},
+{m:"FEB 2026",p:"Meta",t:"Llama 4 Maverick & Scout — Metas Open-Source-Sprung",s:"MoE-Architektur, multimodal, 10M Token Kontext (Scout)",g:["Modell","Multimodal","Kontext"],w:"Meta veröffentlichte Llama 4: Maverick (MoE, 400B Parameter, 17B aktiv) und Scout (10M Token Kontextfenster). Beide multimodal und Open Source.",n:"Für Unternehmen, die KI on-premise betreiben wollen, die wichtigste Option: Frontier-Performance ohne Vendor Lock-in."},
+{m:"FEB 2026",p:"Copilot",t:"Copilot Chat mit GPT-5.2 Modellauswahl",s:"Quick Response oder Think Deeper — Nutzer wählen Reasoning-Tiefe",g:["Modell","Workflow"],w:"Microsoft integrierte GPT-5.2 in Copilot Chat mit wählbaren Modi: Quick Response für schnelle Antworten, Think Deeper für komplexes Reasoning.",n:"Nutzer können selbst entscheiden, ob sie eine schnelle oder tiefgründige Antwort brauchen — mehr Kontrolle über Qualität vs. Geschwindigkeit."},
+
+// ─── JAN 2026 ───
+{m:"JAN 2026",p:"Claude",t:"Claude mit erweitertem Memory & Projekten",s:"Persistentes Gedächtnis und projektbasiertes Arbeiten",g:["Workflow","Kontext"],w:"Anthropic erweiterte Claude um ein persistentes Memory-System: Claude erinnert sich konversationsübergreifend an Präferenzen, Kontexte und Arbeitsweisen.",n:"Weniger Wiederholung, mehr Kontinuität: Claude wird zum Arbeitspartner, der den eigenen Kontext kennt."},
+{m:"JAN 2026",p:"ChatGPT",t:"o3-mini — Schnelles Reasoning für alle",s:"Coding- & Mathe-Spezialist, kostenlos verfügbar",g:["Modell","Coding"],w:"OpenAI veröffentlichte o3-mini: kompaktes, schnelles Reasoning-Modell, besonders stark in Coding und Mathematik — kostenlos für alle.",n:"Leistungsstarkes Reasoning ohne Abo-Kosten."},
+{m:"JAN 2026",p:"Gemini",t:"Gemini 3.0 Flash Preview",s:"Next-Gen Geschwindigkeit mit verbessertem Reasoning",g:["Modell"],w:"Google stellte Gemini 3.0 Flash Preview vor: die nächste Generation des schnellsten Gemini-Modells.",n:"Noch schnellere Antworten bei komplexeren Aufgaben — der Free-Tier wird immer leistungsfähiger."},
+
+// ─── DEZ 2025 ───
+{m:"DEZ 2025",p:"Claude",t:"Claude mit Computer Use — GA",s:"KI steuert Desktop: Klicken, Tippen, Navigieren wie ein Mensch",g:["Browser","Workflow","Agent"],w:"Computer Use wurde allgemein verfügbar: Claude kann den Desktop steuern — klicken, tippen, zwischen Apps navigieren.",n:"Legacy-Software ohne API kann jetzt automatisiert werden. Besonders wertvoll für repetitive PC-Aufgaben."},
+{m:"DEZ 2025",p:"Copilot",t:"GPT-5 als Standard-Modell in Copilot Chat",s:"Automatisches Modell-Routing für alle Copilot-Nutzer",g:["Modell","Workflow"],w:"Microsoft machte GPT-5 zum Standard-Modell in Copilot Chat. Das System routet Prompts automatisch zum besten Modell: schnelle Modelle für einfache Aufgaben, spezialisierte Reasoning-Modelle für komplexe.",n:"Copilot wird spürbar intelligenter — ohne dass Nutzer etwas umstellen müssen. Die KI wählt selbst das passende Modell."},
+{m:"DEZ 2025",p:"ChatGPT",t:"Sora — Video-Generierung wird breit verfügbar",s:"Bis 1080p, 20 Sekunden, Storyboard-Modus",g:["Multimodal"],w:"OpenAI machte Sora breit verfügbar (nach Preview 12/2024): Videos bis 1080p, 20 Sekunden, Storyboard-Funktion.",n:"Kurze Videos für Social Media oder Produktdemos ohne Videoproduktions-Know-how."},
+{m:"DEZ 2025",p:"ChatGPT",t:"GPT-5.2 — starker Reasoning-Sprung der 5er-Serie",s:"Tiefes Reasoning, Spreadsheet- & Präsentationserstellung",g:["Modell"],w:"GPT-5.2 erschien mit spürbar besserem Reasoning, verbesserter Long-Context-Verarbeitung und erstmals Spreadsheet-/Präsentations-Erstellung.",n:"Komplexe Analyse-Aufgaben werden deutlich zuverlässiger — weniger Nachbearbeitung nötig."},
+
+// ─── NOV 2025 ───
+{m:"NOV 2025",p:"ChatGPT",t:"ChatGPT Pro mit o3 — 300\u00A0$/Monat",s:"PhD-Level Reasoning, ‚Frontier Model'",g:["Modell"],w:"OpenAI führte ChatGPT Pro ein: 300\u00A0$/Monat mit Zugriff auf o3 — das leistungsstärkste Reasoning-Modell.",n:"Maximale Reasoning-Leistung für Power-User — allerdings zu einem Preis, der für die meisten schwer zu rechtfertigen ist."},
+{m:"NOV 2025",p:"Gemini",t:"Gemini 2.5 Pro mit nativem Audio",s:"Natürliche Sprachausgabe mit Emotionen und Pausen",g:["Multimodal"],w:"Google ergänzte Gemini 2.5 Pro um native Audioausgabe: natürlichere Stimme, Emotionen und Pausen.",n:"Voice-Interfaces werden erstmals so natürlich, dass sie für Kundenkontakt einsetzbar werden."},
+{m:"NOV 2025",p:"Copilot",t:"Microsoft Ignite: Copilot Agents, MCP & Copilot Studio",s:"Autonome Agenten, 1.400+ Konnektoren, Word/Excel/PPT-Agents",g:["Agent","Workflow"],w:"Auf der Ignite 2025 stellte Microsoft autonome Copilot Agents vor, MCP-Support in Copilot Studio, sowie spezialisierte Agenten für Word, Excel und PowerPoint. Dazu Security Copilot für M365 E5-Kunden.",n:"Microsoft macht den Schritt von der Assistenz zur Automatisierung: Agenten erledigen Aufgaben eigenständig innerhalb des M365-Ökosystems — ein entscheidender Schritt für Enterprise-KI."},
+
+// ─── OKT 2025 ───
+{m:"OKT 2025",p:"ChatGPT",t:"Operator — OpenAIs Browser-Agent",s:"Agent-Modus bucht, recherchiert, füllt Formulare",g:["Browser","Workflow","Agent"],w:"OpenAI veröffentlichte den Operator-Browser-Agenten: ChatGPT navigiert eigenständig im Web.",n:"Routineaufgaben im Web können delegiert werden — ein Vorgeschmack auf vollautonome KI-Assistenten."},
+{m:"OKT 2025",p:"Gemini",t:"Project Mariner — Googles Browser-Agent",s:"Tab-übergreifend handeln mit Nutzer-Bestätigung",g:["Browser","Workflow","Agent"],w:"Google stellte Project Mariner vor: ein Browser-Agent mit Nutzer-Bestätigung vor wichtigen Aktionen.",n:"Web-Recherchen und Formulare werden vom Agenten erledigt — mit eingebauter Sicherheitsstufe."},
+{m:"OKT 2025",p:"Meta",t:"Llama 3.2 — multimodal und kompakt",s:"Vision-Modelle (11B/90B) + leichte Varianten (1B/3B) für Mobilgeräte",g:["Modell","Multimodal"],w:"Meta veröffentlichte Llama 3.2 mit Vision-Modellen und extrem kompakten Varianten für Mobilgeräte. Alle Open Source.",n:"KI direkt auf Smartphone oder Edge-Device — ohne Cloud. Ideal für datensensible Anwendungen."},
+{m:"OKT 2025",p:"Mistral",t:"Pixtral Large — multimodales Flaggschiff",s:"124B Parameter, Bild+Text, Apache 2.0",g:["Modell","Multimodal"],w:"Mistral veröffentlichte Pixtral Large (124B): multimodales Open-Source-Modell auf Augenhöhe mit proprietären Modellen.",n:"Dokumente mit Bildern und Diagrammen analysieren — Open Source und selbst hostbar."},
+
+// ─── SEP 2025 ───
+{m:"SEP 2025",p:"Claude",t:"Claude Code — Command-Line Coding-Agent",s:"Agentic Coding direkt im Terminal",g:["Coding","Agent"],w:"Anthropic veröffentlichte Claude Code: einen Kommandozeilen-Agenten, der eigenständig Code schreibt, testet und refactort.",n:"Komplexe Coding-Aufgaben delegieren — besonders stark bei Refactoring, Tests und Multi-File-Änderungen."},
+{m:"SEP 2025",p:"Gemini",t:"Gemini 2.5 mit Grounding & strukturierter Ausgabe",s:"Verifizierte Antworten mit Quellenangaben",g:["Modell","Recherche"],w:"Google erweiterte Gemini 2.5 um Grounding mit Google Search und strukturierte Ausgabe mit Quellenangaben.",n:"Recherche-Ergebnisse werden nachprüfbar — großer Vertrauensgewinn für Berichte und Entscheidungsvorlagen."},
+{m:"SEP 2025",p:"Mistral",t:"Mistral Large 2 — europäisches Spitzenmodell",s:"123B Parameter, 128K Kontext, mehrsprachig",g:["Modell","Coding"],w:"Mistral brachte Large 2: 123B Parameter, multimodal, 128K Kontext, stark in europäischen Sprachen. Selbst hostbar.",n:"Stärkste selbst betreibbare Alternative für europäische Unternehmen mit Datenschutzanforderungen."},
+{m:"SEP 2025",p:"Copilot",t:"Copilot Pages — kollaborative KI-Arbeitsfläche",s:"Multiplayer-Canvas für Teams, Diagramme, Code-Blöcke",g:["Workflow"],w:"Microsoft erweiterte Copilot Pages um Rich Artifacts: interaktive Flussdiagramme, Code-Blöcke und Daten-Visualisierungen, teilbar im Team.",n:"Teams können KI-Ergebnisse gemeinsam weiterentwickeln statt nur zu konsumieren — kollaboratives Arbeiten mit KI-Output."},
+
+// ─── AUG 2025 ───
+{m:"AUG 2025",p:"ChatGPT",t:"GPT-4o native Bildbearbeitung",s:"Selektive Bildmanipulation direkt im Chat",g:["Multimodal"],w:"GPT-4o (Image) wurde viral: Selfies in 3D-Figuren, selektive Bildbearbeitung direkt im Chat.",n:"Professionelle Bildbearbeitung ohne Photoshop — für alle kostenlos."},
+{m:"AUG 2025",p:"ChatGPT",t:"M365 Copilot Deep Integration",s:"KI in Word, Excel, Teams — 85\u00A0% der Fortune 500",g:["Workflow","Kontext"],w:"ChatGPT wurde tiefer in Microsoft 365 Copilot integriert. Generative KI in 85\u00A0% der Fortune 500.",n:"KI als fester Teil des Unternehmensalltags, datenschutzkonform in der Corporate Cloud."},
+{m:"AUG 2025",p:"Gemini",t:"URL Context & Grounding — GA",s:"Link mitschicken, Gemini analysiert direkt",g:["Workflow","Kontext"],w:"URL Context allgemein verfügbar: eine URL teilen, Gemini analysiert den Inhalt sofort.",n:"Webseiten und Artikel direkt in die Konversation einbeziehen — kein Copy-Paste mehr."},
+
+// ─── JUL 2025 ───
+{m:"JUL 2025",p:"Gemini",t:"Multi-Agenten-Orchestrierung",s:"Parallel agierende Reasoning-Agenten",g:["Agent","Modell"],w:"Google demonstrierte Multi-Agenten-Orchestrierung: mehrere Gemini-Instanzen arbeiten parallel an Teilaufgaben.",n:"Komplexe Aufgaben parallelisieren — deutlich schnellere Ergebnisse."},
+{m:"JUL 2025",p:"Mistral",t:"Voxtral — Open-Source Audio-Transkription",s:"Schlägt Whisper, Apache 2.0, lokal betreibbar",g:["Workflow","Multimodal"],w:"Mistral stellte Voxtral vor: Open-Source-Transkription, die Whisper schlägt. Komplett lokal betreibbar.",n:"Meetings datenschutzkonform transkribieren — ohne Cloud-Service."},
+{m:"JUL 2025",p:"Meta",t:"Llama 3.1 405B — größtes Open-Source-Modell",s:"405B Parameter, 128K Kontext, Open Source",g:["Modell","Kontext"],w:"Meta veröffentlichte Llama 3.1 405B: das größte Open-Source-Sprachmodell. Performance auf Augenhöhe mit GPT-4 Turbo.",n:"Erstes echtes Frontier-Modell als Open Source — anpassbar, ohne Lizenzgebühren einsetzbar."},
+
+// ─── JUN 2025 ───
+{m:"JUN 2025",p:"Gemini",t:"Gemini 2.5 Flash & Pro — Stable Release",s:"Klare 2-Modell-Struktur, großzügiger Gratis-Tier",g:["Modell"],w:"Google stabilisierte Gemini 2.5: Flash (schnell) und Pro (leistungsstark) mit großzügigem Free-Tier.",n:"Googles kostenloses Angebot wird zum ernsthaften Konkurrenten für ChatGPT Plus."},
+{m:"JUN 2025",p:"Claude",t:"Claude Deep Research",s:"5-seitige Reports — verdichtet, praxisnah, lesbar",g:["Recherche"],w:"Anthropic startete Deep Research: autonome Web-Recherche mit verdichtetem Output als quellenbasierte Reports.",n:"Marktanalysen und Recherchen in Minuten statt Stunden — mit nachvollziehbaren Quellen."},
+{m:"JUN 2025",p:"Mistral",t:"Magistral — erstes Reasoning-Modell von Mistral",s:"Chain-of-Thought in 20+ Sprachen, Open Source",g:["Modell"],w:"Mistral brachte Magistral: Reasoning-Modell mit Chain-of-Thought in 20+ Sprachen, Open-Source-Variante verfügbar.",n:"Reasoning auf Deutsch mit nachvollziehbarem Denkprozess — die Open-Source-Alternative zu o1/o3."},
+
+// ─── MAI 2025 ───
+{m:"MAI 2025",p:"Claude",t:"Claude 4 — Opus & Sonnet Launch",s:"200K Kontext, autonome Werkzeugnutzung während des Denkens",g:["Modell","Coding"],w:"Anthropic veröffentlichte Claude 4: Opus 4 (Flaggschiff) und Sonnet 4 mit 200K Kontext und autonomer Tool-Nutzung beim Reasoning.",n:"Claude kann während des Nachdenkens eigenständig Tools aufrufen — Recherche, Code, Dateien in einem Zug."},
+{m:"MAI 2025",p:"ChatGPT",t:"OpenAI Codex — Cloud Coding Agent",s:"Parallele Coding-Aufgaben in isolierten Umgebungen",g:["Coding","Agent"],w:"OpenAI startete Codex als Cloud-Coding-Agent: mehrere Coding-Aufgaben parallel in Sandbox-Umgebungen.",n:"Mehrere Code-Aufgaben gleichzeitig delegieren — dramatische Beschleunigung."},
+{m:"MAI 2025",p:"Gemini",t:"Gemini 2.5 Pro — Reasoning-Leader",s:"1 Million Token Kontext, Benchmark-Spitze",g:["Modell","Kontext"],w:"Google launchte Gemini 2.5 Pro mit 1 Million Token Kontextfenster und führend in Reasoning-Benchmarks.",n:"Komplette Bücher oder Codebasen in einem Prompt — ein Gamechanger für Analyse-Arbeit."},
+{m:"MAI 2025",p:"Claude",t:"MCP — Model Context Protocol wird Standard",s:"Offener Standard für Tool-Integration, breite Adoption",g:["Workflow","Agent"],w:"Anthropics Model Context Protocol (MCP) wurde zum De-facto-Standard für KI-Tool-Integration. OpenAI, Google und Microsoft adoptierten MCP.",n:"KI-Modelle können standardisiert mit beliebigen Systemen kommunizieren — ein USB-Stecker für KI."},
+{m:"MAI 2025",p:"Copilot",t:"Copilot Wave 2 Spring & Copilot Tuning",s:"Neues App-Design, Agent Store, Multi-Agenten-Orchestrierung",g:["Workflow","Agent"],w:"Microsoft rollte das große Copilot Wave 2 Spring Release aus: überarbeitete M365 Copilot App, Copilot Notebooks, neuer Agent Store, und Copilot Tuning — Feinabstimmung von KI-Modellen mit Unternehmensdaten ohne Code.",n:"Unternehmen können erstmals KI-Modelle mit ihren eigenen Daten und Prozessen trainieren — ohne Data-Science-Team. Der Agent Store ermöglicht Zugriff auf spezialisierte Agenten von Microsoft und Drittanbietern."},
+
+// ─── APR 2025 ───
+{m:"APR 2025",p:"ChatGPT",t:"ChatGPT als Shopping-Plattform",s:"Produktvergleich mit Bildern, Preisen und Reviews",g:["Workflow"],w:"OpenAI integrierte Shopping-Funktionalität: Produktsuche, Preisvergleich und Reviews im Chat.",n:"Kaufentscheidungen mit KI — Amazon bekommt erstmals ernste KI-Konkurrenz."},
+{m:"APR 2025",p:"Gemini",t:"Gemini in Google Workspace — GA",s:"Nativ in Docs, Gmail, Slides, Meet",g:["Workflow","Kontext"],w:"Gemini ist in allen Google Workspace Apps nativ eingebettet und allgemein verfügbar.",n:"Für 3+ Milliarden Workspace-Nutzer entfällt der Tool-Wechsel. Messbare Zeitersparnis."},
+{m:"APR 2025",p:"Copilot",t:"Copilot in Pages als Meeting-Assistent",s:"Echtzeit-Zusammenarbeit, Web-Daten in Excel, Agenten in Outlook",g:["Workflow"],w:"Copilot Pages wurde zum dynamischen Meeting-Assistenten. Dazu: Web-Suche direkt in Excel und Copilot-Agenten in Outlook.",n:"KI-gestützte Zusammenarbeit in Echtzeit — Copilot wird vom Chat-Tool zum aktiven Teilnehmer in Meetings und Workflows."},
+
+// ─── MÄR 2025 ───
+{m:"MÄR 2025",p:"Claude",t:"Claude 3.7 Sonnet mit Extended Thinking",s:"Sichtbares, steuerbares Chain-of-Thought-Reasoning",g:["Modell","Coding"],w:"Anthropic veröffentlichte Claude 3.7 Sonnet mit Extended Thinking: sichtbares, steuerbares Reasoning.",n:"Mehr Kontrolle und Transparenz — ideal für Analysen, bei denen der Denkweg zählt."},
+{m:"MÄR 2025",p:"Mistral",t:"Mistral Small 3.1 — bestes Open-Weight seiner Klasse",s:"24B Parameter, multimodal, Apache-Lizenz",g:["Modell","Kontext"],w:"Mistral Small 3.1: 24B, multimodal, Apache 2.0 — das stärkste Modell seiner Größenklasse, selbst hostbar.",n:"Läuft auf einer GPU lokal mit multimodalen Fähigkeiten — Sweet Spot für datenschutzbewusste Unternehmen."},
+{m:"MÄR 2025",p:"Gemini",t:"Gemini 2.5 Pro Preview — 1\u00A0Mio. Token Kontext",s:"Bücher, Codebasen, stundenlange Audios in einem Prompt",g:["Modell","Kontext"],w:"Google stellte Gemini 2.5 Pro Preview vor: 1 Million Token Kontext — das größte Kontextfenster aller großen Modelle.",n:"Ganze Bücher oder stundenlange Aufnahmen in einem Prompt analysieren."},
+
+// ─── FEB 2025 ───
+{m:"FEB 2025",p:"ChatGPT",t:"GPT-4.5 'Orion' für Pro-User",s:"Besseres Reasoning, weniger Halluzinationen",g:["Modell"],w:"OpenAI brachte GPT-4.5 (Codename 'Orion'): spürbar besseres Reasoning und weniger Halluzinationen.",n:"Zuverlässigere Antworten — ein wichtiger Schritt in Richtung vertrauenswürdiger KI."},
+{m:"FEB 2025",p:"Gemini",t:"Deep Research für alle Gemini-Nutzer",s:"Autonome Recherche mit strukturierten Reports",g:["Recherche","Workflow"],w:"Google rollte Deep Research für alle Gemini-Nutzer aus: mehrstufige Recherche mit strukturierten Reports.",n:"Umfangreiche Recherchen delegieren — die KI liefert fertige Berichte."},
+{m:"FEB 2025",p:"Mistral",t:"Le Chat — vollausgebauter Gratis-Chatbot",s:"Web-Suche, Canvas, Bildgenerierung, 1.000 Wörter/Sek.",g:["Workflow","Multimodal"],w:"Mistral launchte Le Chat: Web-Suche, Canvas, Bildgenerierung (Flux Pro), 1.000 Wörter/Sek. Komplett kostenlos.",n:"Europäischer ChatGPT-Konkurrent ohne Kosten — relevant für datenschutzbewusste Nutzer."},
+
+// ─── JAN 2025 ───
+{m:"JAN 2025",p:"ChatGPT",t:"GPT-4o Bildanalyse & Canvas für alle",s:"Gratis-Nutzer erhalten Dokumenten-Editing",g:["Multimodal","Workflow"],w:"OpenAI öffnete GPT-4o Canvas und Bildanalyse für alle — inklusive kostenloser Accounts.",n:"Dokumente bearbeiten und Bilder analysieren — Grundfunktionen für alle zugänglich."},
+{m:"JAN 2025",p:"Gemini",t:"Gemini 2.0 Flash — öffentlicher Start",s:"Native Bildgenerierung, Audio-Output, Sub-Sekunden-Latenz",g:["Modell","Multimodal"],w:"Google startete Gemini 2.0 Flash: nativ multimodal mit Bildgenerierung, Audio-Output und Echtzeit-Latenz.",n:"Schnellste multimodale KI für interaktive Workflows."},
+{m:"JAN 2025",p:"Claude",t:"Verbesserter Datei-Upload & Dokumentenanalyse",s:"Mehr Formate, schnellere Verarbeitung",g:["Workflow"],w:"Anthropic verbesserte den Datei-Upload massiv: mehr Formate, schnellere und zuverlässigere PDF-Analyse.",n:"Lange PDFs verlässlich analysieren — Produktivitätsgewinn ohne technisches Setup."},
+{m:"JAN 2025",p:"Copilot",t:"Copilot Chat für alle M365-Nutzer — kostenlos",s:"KI-Chat mit Web-Grounding, Bildgenerierung, Pages",g:["Workflow"],w:"Microsoft machte Copilot Chat (ehemals Bing Chat Enterprise) für alle M365-Nutzer kostenlos verfügbar: KI-Chat mit Web-Grounding, Bildgenerierung und Copilot Pages.",n:"Jeder M365-Nutzer hat jetzt Zugang zu einem leistungsfähigen KI-Chat — die niedrigste Einstiegshürde im Enterprise-KI-Markt."},
 ];
 
-const MODEL_TIMELINES = {
-"ChatGPT":{desc:"OpenAIs Flaggschiff-Chatbot — vom Spielzeug zum universellen Arbeitsassistenten.",entries:[
-{d:"Nov 2022",t:"ChatGPT Launch (GPT-3.5)",h:"Erster öffentlicher Chatbot, 100 Mio. Nutzer in 2 Monaten"},
-{d:"Feb 2023",t:"ChatGPT Plus",h:"Premium-Abo mit schnellerem Zugang"},
-{d:"Mär 2023",t:"GPT-4 Integration",h:"Deutlich besseres Reasoning und Zuverlässigkeit"},
-{d:"Jul 2023",t:"Code Interpreter",h:"Python-Code direkt im Chat ausführen, Dateien analysieren"},
-{d:"Sep 2023",t:"Browsing & DALL·E 3",h:"Web-Suche und Bildgenerierung direkt integriert"},
-{d:"Nov 2023",t:"Custom GPTs & GPT Store",h:"Personalisierte Assistenten ohne Code erstellen"},
-{d:"Mai 2024",t:"GPT-4o Launch",h:"Multimodal: Text, Bild, Audio in einem Modell, kostenlos"},
-{d:"Aug 2024",t:"Advanced Voice Mode",h:"Natürliche Echtzeit-Sprachgespräche"},
-{d:"Sep 2024",t:"o1 Reasoning-Modell",h:"Chain-of-Thought-Reasoning für komplexe Probleme"},
-{d:"Okt 2024",t:"ChatGPT Search & Canvas",h:"Web-Suche mit Quellen, kollaborativer Editor"},
-{d:"Dez 2024",t:"Sora Video-Generierung",h:"Text-zu-Video für alle Nutzer, bis 1080p/20s"},
-{d:"Jan 2025",t:"o3-mini Reasoning",h:"Schnelles Reasoning kostenlos verfügbar"},
-{d:"Feb 2025",t:"Deep Research",h:"Autonome mehrstufige Recherche mit strukturierten Reports"},
-{d:"Mär 2025",t:"GPT Image 1",h:"Native Bildgenerierung im Chat (Ghibli-Trend)"},
-{d:"Mai 2025",t:"Codex Coding Agent + Memory",h:"Autonomer Cloud-Coder, dauerhafter Nutzer-Kontext"},
-{d:"Aug 2025",t:"GPT-5 Launch",h:"Multimodales Powerhouse, neues Flaggschiff"},
-{d:"Sep 2025",t:"Atlas AI-Browser",h:"KI navigiert eigenständig im Web"},
-{d:"Dez 2025",t:"GPT-5.2",h:"Größter Reasoning-Sprung der 5er-Serie"},
-{d:"Mär 2026",t:"GPT-5.4 + Computer Use",h:"75% auf OSWorld, bedient Desktop-Programme"}
-]},
-"Claude":{desc:"Anthropics KI-Assistent — fokussiert auf Sicherheit, lange Kontexte und Tool-Nutzung.",entries:[
-{d:"Mär 2023",t:"Claude 1 Launch",h:"Erster öffentlicher Release, Fokus auf Sicherheit"},
-{d:"Jul 2023",t:"Claude 2 (100k Kontext)",h:"Verbessertes Reasoning, lange Dokumente"},
-{d:"Nov 2023",t:"Claude 2.1 (200k Kontext)",h:"Ganze Bücher und Verträge verarbeiten"},
-{d:"Mär 2024",t:"Claude 3 Opus/Sonnet/Haiku",h:"Modellfamilie, Opus als Top-Modell, multimodal"},
-{d:"Jun 2024",t:"Claude 3.5 Sonnet + Artifacts",h:"Interaktive Apps und Dokumente im Chat"},
-{d:"Okt 2024",t:"Computer Use (Beta)",h:"KI steuert den Desktop"},
-{d:"Mär 2025",t:"Claude 3.7 + MCP",h:"Extended Thinking, offenes Tool-Protokoll"},
-{d:"Mai 2025",t:"Claude 4 (Opus & Sonnet)",h:"Autonome Werkzeugnutzung während des Denkens"},
-{d:"Jun 2025",t:"Claude Deep Research",h:"5-seitige, verdichtete Research-Reports"},
-{d:"Sep 2025",t:"Claude Enterprise (500k)",h:"Doppelt so viel Kontext wie Wettbewerber"},
-{d:"Feb 2026",t:"Claude Opus 4.6 (1M Kontext)",h:"Coding-Champion, längste Agenten-Tasks"},
-{d:"Mär 2026",t:"Claude in Chrome",h:"Browser-Agent direkt im Chrome"}
-]},
-"Gemini":{desc:"Googles KI — tief in Workspace und Android integriert, riesige Kontextfenster.",entries:[
-{d:"Mär 2023",t:"Bard Launch",h:"Googles erster ChatGPT-Konkurrent"},
-{d:"Feb 2024",t:"Gemini 1.0 + 1.5 Pro (1M)",h:"Rebranding, 1 Mio. Token Kontext"},
-{d:"Feb 2025",t:"Deep Research für alle",h:"Autonome Recherche mit Reports"},
-{d:"Mär 2025",t:"Gemini 2.5 Pro Preview",h:"Ganze Bücher in einem Prompt"},
-{d:"Apr 2025",t:"Gemini in Google Workspace",h:"Nativ in Docs, Gmail, Slides, Meet"},
-{d:"Jun 2025",t:"Gemini 2.5 Flash & Pro (Stable)",h:"Klare 2-Modell-Struktur"},
-{d:"Aug 2025",t:"Nano Banana Bild-Editing",h:"Viraler KI-Bildbearbeitungs-Trend"},
-{d:"Sep 2025",t:"Project Mariner Browser-Agent",h:"Web-Aufgaben automatisieren"},
-{d:"Feb 2026",t:"Gemini 3.1 Pro",h:"Übertrifft Claude 4.6 und GPT-5.2 in Benchmarks"}
-]},
-"Microsoft Copilot":{desc:"KI-Integration in das gesamte Microsoft-Office-Ökosystem.",entries:[
-{d:"Jun 2022",t:"GitHub Copilot GA",h:"KI-Code-Assistent für Entwickler"},
-{d:"Nov 2023",t:"Microsoft 365 Copilot Launch",h:"KI in Word, Excel, PowerPoint, Outlook, Teams"},
-{d:"Jan 2024",t:"Copilot für Teams",h:"Automatische Meeting-Zusammenfassungen"},
-{d:"Aug 2025",t:"Deep Integration",h:"85% der Fortune 500 nutzen M365 Copilot"},
-{d:"Sep 2025",t:"Copilot Agents in Dynamics",h:"Autonome KI für Sales, Service, Finance"},
-{d:"Nov 2025",t:"Copilot Actions",h:"Workflow-Automatisierung"},
-{d:"Feb 2026",t:"Researcher & Analyst",h:"Deep Research in M365"}
-]},
-"Midjourney":{desc:"Goldstandard für KI-Bildgenerierung — von experimentell zu professionell.",entries:[
-{d:"Jul 2022",t:"Midjourney v1–v3",h:"Erste öffentliche Beta"},
-{d:"Nov 2022",t:"Midjourney v4",h:"Deutlicher Qualitätssprung"},
-{d:"Mär 2023",t:"Midjourney v5",h:"Fotorealismus, bessere Hände"},
-{d:"Dez 2023",t:"Midjourney v6",h:"Text, Kohärenz, professionelle Qualität"},
-{d:"Jun 2024",t:"Midjourney v6.1",h:"Verbesserte Details, 25% schneller"},
-{d:"Apr 2025",t:"Midjourney v7",h:"Bestes Prompt-Verständnis, höchste Qualität"}
-]},
-"Bildgenerierung (weitere)":{desc:"DALL·E, Stable Diffusion, Adobe Firefly und GPT Image.",entries:[
-{d:"Apr 2022",t:"DALL·E 2",h:"Erster großer Text-zu-Bild-Durchbruch"},
-{d:"Aug 2022",t:"Stable Diffusion (Open Source)",h:"Bildgenerierung lokal auf eigenem Rechner"},
-{d:"Mär 2023",t:"Adobe Firefly 1.0",h:"Lizenzfreie KI-Bilder, Photoshop-Integration"},
-{d:"Okt 2023",t:"DALL·E 3 (in ChatGPT)",h:"Bildgenerierung direkt im Chat"},
-{d:"Aug 2024",t:"Flux.1 (Open Source)",h:"Virale fotorealistische Ergebnisse"},
-{d:"Mär 2025",t:"GPT Image 1",h:"Native Bildgenerierung, Ghibli-Hype"}
-]},
-"Video & Audio":{desc:"Von experimentellen Clips zu Produktionsvideos und Studio-Musik.",entries:[
-{d:"Dez 2023",t:"Suno v1 / Udio",h:"Erste KI-Songs aus Text"},
-{d:"Feb 2024",t:"Sora Preview",h:"Revolutionäre Video-Demos"},
-{d:"Jun 2024",t:"Runway Gen-3 Alpha",h:"Kurzvideos für Kreative"},
-{d:"Aug 2024",t:"GPT-4o Advanced Voice",h:"Flüssige Echtzeit-Sprachgespräche"},
-{d:"Dez 2024",t:"Sora Turbo Launch",h:"20s, 1080p, Storyboard-Modus"},
-{d:"Okt 2025",t:"Runway Gen-4 / Kling 1.6",h:"Produktionsqualität"},
-{d:"Nov 2025",t:"Suno v5",h:"Studioqualität, kaum von echten Aufnahmen unterscheidbar"}
-]},
-"Coding-Tools":{desc:"Von Code-Vorschlägen zu autonomen Coding-Agenten.",entries:[
-{d:"Jun 2022",t:"GitHub Copilot GA",h:"Inline-Code-Vorschläge in der IDE"},
-{d:"Jul 2023",t:"GitHub Copilot Chat",h:"Code erklären, debuggen, refactoren im Gespräch"},
-{d:"Mär 2024",t:"Devin (Cognition)",h:"Erster autonomer KI-Software-Ingenieur"},
-{d:"Jun 2024",t:"Claude Artifacts",h:"Interaktive Apps direkt im Chat bauen"},
-{d:"Okt 2024",t:"Cursor / Windsurf / Bolt.new",h:"KI-first IDEs und Browser-Dev-Tools"},
-{d:"Apr 2025",t:"Claude Code (CLI)",h:"Agentic Coding im Terminal"},
-{d:"Mai 2025",t:"OpenAI Codex / Google Jules",h:"Cloud-Sandbox Coding Agents"}
-]}
+const P=["ChatGPT","Gemini","Claude","Mistral","Meta","Copilot"];
+const T=["Modell","Coding","Workflow","Multimodal","Browser","Kontext","Recherche","Agent"];
+let aP=new Set(P),aT=null,oC=new Set();
+
+function render(){
+  // Provider filter
+  const pf=document.getElementById("pf");
+  const total=D.filter(e=>!aT||e.g.includes(aT)).length;
+  const allSel=aP.size===P.length;
+  let ph='<button class="fb-btn'+(allSel&&!aT?' act-all':'')+'" onclick="selAll()">Alle ('+total+')</button>';
+  P.forEach(p=>{
+    const c=D.filter(e=>e.p===p&&(!aT||e.g.includes(aT))).length;
+    const act=aP.has(p)&&!allSel;
+    ph+='<button class="fb-btn'+(act?' act':'')+'" data-p="'+p+'" onclick="togP(\''+p+'\')">'+p+' ('+c+')</button>';
+  });
+  pf.innerHTML=ph;
+
+  // Tag filter
+  const tf=document.getElementById("tf");
+  let th='';
+  T.forEach(t=>{th+='<button class="tb'+(aT===t?' act':'')+'" onclick="togT(\''+t+'\')">'+t+'</button>';});
+  tf.innerHTML=th;
+
+  // Timeline
+  const f=D.filter(e=>{
+    if(!aP.has(e.p))return false;
+    if(aT&&!e.g.includes(aT))return false;
+    return true;
+  });
+  const tl=document.getElementById("tl");
+  if(!f.length){tl.innerHTML='<p class="empty">Keine Einträge für diese Filterung.</p>';return;}
+  let html='',cm=null;
+  f.forEach(e=>{
+    const gi=D.indexOf(e);
+    const isOpen=oC.has(gi);
+    if(e.m!==cm){
+      if(cm!==null)html+='</div></div>';
+      cm=e.m;
+      html+='<div class="mg"><div class="mh"><div class="md"></div><h2>'+cm+'</h2></div><div class="me">';
+    }
+    html+='<div class="cd'+(isOpen?' open':'')+'" data-p="'+e.p+'" onclick="togC('+gi+')">';
+    html+='<div class="ct"><div class="cb"><div class="cm"><span class="cp">'+e.p+'</span>';
+    e.g.forEach(tag=>{html+='<span class="ctg">'+tag+'</span>';});
+    html+='</div><h3>'+e.t+'</h3><p class="cs">'+e.s+'</p></div><span class="cx">+</span></div>';
+    if(e.w||e.n){
+      html+='<div class="dd">';
+      if(e.w)html+='<div class="ds"><p class="dl">Was ist passiert?</p><p class="dt">'+e.w+'</p></div>';
+      if(e.n)html+='<div class="ds"><p class="dl">Nutzen für Anwender</p><p class="dt">'+e.n+'</p></div>';
+      html+='</div>';
+    }
+    html+='</div>';
+  });
+  if(cm!==null)html+='</div></div>';
+  tl.innerHTML=html;
+}
+
+function selAll(){aP=new Set(P);aT=null;render();}
+function togP(p){
+  if(aP.size===P.length){aP=new Set([p]);}
+  else if(aP.has(p)&&aP.size===1){aP=new Set(P);}
+  else if(aP.has(p)){aP.delete(p);}
+  else{aP.add(p);}
+  render();
+}
+function togT(t){aT=aT===t?null:t;render();}
+function togC(i){oC.has(i)?oC.delete(i):oC.add(i);render();}
+
+document.getElementById("lt").onclick=function(){
+  const g=document.getElementById("lg"),a=document.getElementById("la");
+  g.classList.toggle("open");
+  a.textContent=g.classList.contains("open")?"▾":"▸";
 };
 
-// r = roles array: cxo, lead, fach, dev, admin
-const DATA = [
-{n:56,t:'KI bedient Desktop-Programme eigenständig',desc:'Die KI sieht den Bildschirm, bewegt die Maus, tippt und navigiert durch beliebige Desktop-Anwendungen — wie ein Mensch, aber schneller und rund um die Uhr.',tool:['Claude','ChatGPT'],m:'Mär 2026',c:'agent',l:'★★★★★',r:['fach','dev','admin']},
-{n:55,t:'Echtzeit-Zusammenarbeit mit KI an Dokumenten',desc:'In Google Docs oder ChatGPT Canvas arbeitet die KI live mit: ergänzt Absätze, korrigiert, fügt Daten ein — während man selbst weiterschreibt.',tool:['Gemini','ChatGPT'],m:'2025',c:'tool',l:'★★★★☆',r:['lead','fach','admin']},
-{n:54,t:'Komplexe Dashboards & Datenvisualisierungen',desc:'Aus Datenbeschreibungen oder CSVs generiert die KI interaktive Charts und Dashboards mit funktionierendem Code — ohne Programmierkenntnisse.',tool:['Claude','ChatGPT'],m:'2025',c:'code',l:'★★★★★',r:['cxo','lead','fach']},
-{n:53,t:'Musik-Generierung in Studioqualität',desc:'Komplette Songs mit Gesang, Instrumenten und Mastering, die kaum noch von professionellen Aufnahmen zu unterscheiden sind.',tool:['Video & Audio'],m:'Nov 2025',c:'video',l:'★★★★☆',r:['fach','mktg']},
-{n:52,t:'Video-Generierung in Produktionsqualität',desc:'Hochauflösende, physikalisch plausible Videoclips für Werbung, Social Media oder Produktdemos — aus einer Textbeschreibung.',tool:['Video & Audio'],m:'Okt 2025',c:'video',l:'★★★★☆',r:['fach','mktg']},
-{n:51,t:'KI als Browser-Agent',desc:'Die KI öffnet Websites, loggt sich ein, füllt Formulare aus, vergleicht Preise und erledigt mehrstufige Web-Aufgaben autonom.',tool:['ChatGPT','Claude'],m:'Sep 2025',c:'agent',l:'★★★★☆',r:['fach','dev','admin']},
-{n:50,t:'Multi-Step-Workflows delegieren',desc:'Ganze Arbeitsketten delegieren: "Recherchiere, erstelle eine Analyse und schick den Bericht als PDF" — die KI erledigt alle Schritte.',tool:['Claude','ChatGPT'],m:'Jul 2025',c:'agent',l:'★★★★★',r:['cxo','lead','fach','admin']},
-{n:49,t:'Autonome Coding-Agenten',desc:'Die KI analysiert Code-Repositories, schreibt Code, erstellt Tests, korrigiert Fehler und erstellt Pull Requests — weitgehend selbstständig.',tool:['Coding-Tools'],m:'Mai 2025',c:'agent',l:'★★★★★',r:['dev']},
-{n:48,t:'Ganze Softwareprojekte von KI entwickeln',desc:'Komplette Anwendungen (Backend, Frontend, DB) werden durch natürlichsprachliche Anweisungen im Terminal oder in der IDE erstellt.',tool:['Coding-Tools'],m:'Apr 2025',c:'code',l:'★★★★★',r:['dev']},
-{n:47,t:'Bild-Generierung nativ im Chat',desc:'Ohne separates Tool generiert die KI direkt im Chat professionelle Bilder — der "Ghibli-Style-Trend" hat das Mainstream gemacht.',tool:['ChatGPT','Gemini'],m:'Mär 2025',c:'bild',l:'★★★★★',r:['lead','fach','mktg','admin']},
-{n:46,t:'Personalisierte Reports auf Knopfdruck',desc:'Die KI kennt den Kontext (Rolle, Branche, Dokumente) und generiert maßgeschneiderte Berichte und Entscheidungsvorlagen.',tool:['Claude','ChatGPT'],m:'Mär 2025',c:'agent',l:'★★★★☆',r:['cxo','lead','fach']},
-{n:45,t:'KI verbindet sich mit CRM, Kalender, E-Mail',desc:'Über MCP/Connectors greift die KI auf Geschäftsanwendungen zu — fragt Kundendaten ab, erstellt Termine, verschickt E-Mails.',tool:['Claude','ChatGPT'],m:'Mär 2025',c:'tool',l:'★★★★☆',r:['lead','fach','admin']},
-{n:44,t:'KI navigiert Webseiten eigenständig',desc:'Die KI steuert einen Browser: öffnet URLs, klickt Buttons, liest Inhalte aus — ideal für repetitive Web-Aufgaben.',tool:['Claude','ChatGPT'],m:'Jan 2025',c:'agent',l:'★★★★☆',r:['fach','dev','admin']},
-{n:43,t:'Professionelle Dokumente erstellen (PDF, DOCX, PPTX)',desc:'Formatierte, druckfertige Dokumente mit Logos, Tabellen und Layout — bereit zum Versand an Kunden oder das Management.',tool:['Claude'],m:'Feb 2025',c:'tool',l:'★★★★★',r:['lead','fach','admin']},
-{n:42,t:'Tiefgehende Recherchen automatisiert',desc:'Eigenständig dutzende Suchanfragen, Quellen lesen, vergleichen — am Ende ein strukturierter, mehrseitiger Recherche-Report.',tool:['ChatGPT','Gemini','Claude'],m:'Feb 2025',c:'agent',l:'★★★★★',r:['cxo','lead','fach']},
-{n:41,t:'Reasoning bei komplexen Problemen',desc:'Für Mathe, Logik und Strategie "denkt" die KI Schritt für Schritt nach — sichtbar und steuerbar. Qualität nähert sich Expertenniveau.',tool:['ChatGPT','Claude'],m:'Sep 2024',c:'text',l:'★★★★☆',r:['cxo','lead','fach','dev']},
-{n:40,t:'KI-gestützte Web-Suche mit Quellen',desc:'Statt blauer Links liefert die KI eine zusammengefasste Antwort mit Quellenverweisen — schneller als klassische Suchmaschinen.',tool:['ChatGPT'],m:'Okt 2024',c:'tool',l:'★★★★☆',r:['cxo','lead','fach','dev','admin']},
-{n:39,t:'Video-Generierung aus Text (kurze Clips)',desc:'Erste brauchbare Videoclips aus Textbeschreibung — noch kurz und manchmal fehlerhaft, aber ein Paradigmenwechsel.',tool:['Video & Audio'],m:'Dez 2024',c:'video',l:'★★☆☆☆',r:['fach','mktg']},
-{n:38,t:'Komplette Websites & Prototypen generieren',desc:'Webseite in natürlicher Sprache beschreiben → funktionierender Code. Ideal für schnelle Prototypen und Landing Pages.',tool:['Coding-Tools'],m:'Okt 2024',c:'code',l:'★★★★☆',r:['fach','dev']},
-{n:37,t:'Diagramme & Flowcharts generieren',desc:'Statt PowerPoint beschreibt man das Diagramm textlich, und die KI liefert ein fertiges SVG oder interaktives Visual.',tool:['Claude','ChatGPT'],m:'Jun 2024',c:'code',l:'★★★☆☆',r:['lead','fach']},
-{n:36,t:'Produktbeschreibungen aus Fotos erstellen',desc:'Produkt fotografieren, Bild hochladen → verkaufsfertige Beschreibung für den Online-Shop.',tool:['ChatGPT','Claude'],m:'Jun 2024',c:'multi',l:'★★★☆☆',r:['fach','mktg','admin']},
-{n:35,t:'Rechnungen, Formulare, Visitenkarten auslesen',desc:'Dokumente abfotografieren, KI extrahiert strukturierte Daten: Beträge, Adressen, Posten.',tool:['ChatGPT','Claude'],m:'Jun 2024',c:'multi',l:'★★★★☆',r:['fach','admin']},
-{n:34,t:'Echtzeit-Sprachgespräch mit KI',desc:'Flüssig mit der KI sprechen — mit natürlichen Pausen, Emotionen und Unterbrechungen. Ideal für Brainstorming unterwegs.',tool:['ChatGPT'],m:'Aug 2024',c:'video',l:'★★★★☆',r:['cxo','lead','fach','mktg']},
-{n:33,t:'Handschriftliche Notizen digitalisieren',desc:'Foto von Notizen → strukturierter, editierbarer Text inklusive Erkennung von Stichpunkten und Überschriften.',tool:['ChatGPT','Claude'],m:'Jun 2024',c:'multi',l:'★★★☆☆',r:['fach','admin']},
-{n:32,t:'Bilder analysieren (Fotos, Screenshots, Diagramme)',desc:'Bild hochladen, KI beschreibt, interpretiert oder extrahiert Informationen — von Diagrammen bis Urlaubsfotos.',tool:['ChatGPT','Claude'],m:'Jun 2024',c:'multi',l:'★★★★☆',r:['lead','fach','dev']},
-{n:31,t:'Professionelle Stockfoto-Alternative',desc:'Statt teurer Lizenzen passgenaue Bilder generieren für Marketing, Social Media und Präsentationen.',tool:['Midjourney','Bildgenerierung (weitere)'],m:'Apr 2024',c:'bild',l:'★★★★☆',r:['fach','mktg']},
-{n:30,t:'Code für ganze Anwendungen schreiben',desc:'Nicht nur Snippets — zusammenhängende Programme mit DB, API-Calls und UI von der KI geschrieben.',tool:['Coding-Tools'],m:'Mär 2024',c:'code',l:'★★★☆☆',r:['dev']},
-{n:29,t:'Mehrere Dokumente vergleichen & auswerten',desc:'5–10 Dokumente gleichzeitig hochladen, KI findet Gemeinsamkeiten, Widersprüche und fasst Kernaussagen zusammen.',tool:['Claude','Gemini'],m:'Mär 2024',c:'text',l:'★★★★☆',r:['cxo','lead','fach']},
-{n:28,t:'Datenanalyse: CSV hochladen → Insights',desc:'Excel/CSV hochladen → Auswertungen, Diagramme und statistische Zusammenfassungen ohne Formeln.',tool:['ChatGPT','Claude'],m:'Mär 2024',c:'code',l:'★★★★☆',r:['lead','fach']},
-{n:27,t:'Sehr lange Dokumente verarbeiten (Bücher)',desc:'Ganze Bücher, 200-Seiten-Verträge oder stundenlange Transkripte zusammenfassen, durchsuchen, beantworten.',tool:['Claude','Gemini'],m:'Mär 2024',c:'text',l:'★★★★☆',r:['cxo','lead','fach']},
-{n:26,t:'E-Mail-Entwürfe im Kontext',desc:'KI kennt den bisherigen E-Mail-Verlauf und schlägt eine passende Antwort vor — im richtigen Ton.',tool:['Microsoft Copilot','Gemini'],m:'Feb 2024',c:'tool',l:'★★★☆☆',r:['lead','fach','admin']},
-{n:25,t:'Meeting-Protokolle automatisch erstellen',desc:'Nach dem Meeting: strukturiertes Protokoll mit Zusammenfassung, Entscheidungen und offenen Aufgaben.',tool:['Microsoft Copilot'],m:'Jan 2024',c:'tool',l:'★★★★☆',r:['lead','fach','admin']},
-{n:24,t:'KI direkt in Word, Excel, PowerPoint',desc:'In den vertrauten Office-Tools eine Anweisung tippen → Text in Word, Analyse in Excel, Folien in PowerPoint.',tool:['Microsoft Copilot'],m:'Jan 2024',c:'tool',l:'★★★★☆',r:['cxo','lead','fach','admin']},
-{n:23,t:'Musik generieren aus Textbeschreibung',desc:'Stimmung, Genre und Instrumente beschreiben → kompletter Song mit Gesang. Experimentell, aber überzeugend.',tool:['Video & Audio'],m:'Dez 2023',c:'video',l:'★★☆☆☆',r:['fach']},
-{n:22,t:'Erste Sprachkonversation mit KI',desc:'Statt tippen mit der KI sprechen — noch etwas roboterhaft, aber der erste Schritt Richtung natürlicher Interaktion.',tool:['ChatGPT'],m:'Nov 2023',c:'video',l:'★★☆☆☆',r:['cxo','lead','fach']},
-{n:21,t:'Präsentations-Storylines generieren',desc:'KI entwickelt Argumentationslinien, schlägt Folienstrukturen vor und liefert Texte für jeden Slide.',tool:['ChatGPT','Claude'],m:'Nov 2023',c:'text',l:'★★★☆☆',r:['lead','fach','mktg']},
-{n:20,t:'Lange Dokumente zusammenfassen (100+ Seiten)',desc:'Komplette Verträge, Studien oder Geschäftsberichte einlesen und auf wenige Kernpunkte verdichten.',tool:['ChatGPT','Claude'],m:'Nov 2023',c:'text',l:'★★★★☆',r:['cxo','lead','fach']},
-{n:19,t:'Personalisierte KI-Assistenten (Custom GPTs)',desc:'Ohne Code einen spezialisierten Assistenten bauen — z.B. "Vertriebscoach" oder "Compliance-Checker".',tool:['ChatGPT'],m:'Nov 2023',c:'tool',l:'★★★☆☆',r:['lead','fach','dev']},
-{n:18,t:'Bilder nach präziser Beschreibung',desc:'Bildgenerierung versteht endlich komplexe Anweisungen und liefert genau das beschriebene Motiv.',tool:['Bildgenerierung (weitere)','Midjourney'],m:'Okt 2023',c:'bild',l:'★★★★☆',r:['fach','mktg']},
-{n:17,t:'Wettbewerbs- & Marktrecherchen',desc:'KI durchsucht das Internet und stellt Infos zu Wettbewerbern, Markttrends und Branchenentwicklungen zusammen.',tool:['ChatGPT'],m:'Sep 2023',c:'text',l:'★★☆☆☆',r:['cxo','lead','fach','mktg']},
-{n:16,t:'Code-Analyse & Code-Review',desc:'Code hochladen → KI erklärt ihn, findet Fehler, schlägt Verbesserungen vor, prüft Sicherheitslücken.',tool:['Coding-Tools'],m:'Jul 2023',c:'code',l:'★★☆☆☆',r:['dev']},
-{n:15,t:'Professionelle Bildgenerierung (Marketing)',desc:'KI-Bilder erstmals gut genug für Social Media, Werbebanner und Blogpost-Header.',tool:['Midjourney','Bildgenerierung (weitere)'],m:'Mai 2023',c:'bild',l:'★★★☆☆',r:['fach','mktg']},
-{n:14,t:'Gesprächsleitfäden & Workshop-Agenden',desc:'Strukturierte Agenden mit Zeitplanung, Methoden und Moderationshinweisen — Planungs-Turbo für Trainer.',tool:['ChatGPT','Claude'],m:'Mär 2023',c:'text',l:'★★★☆☆',r:['lead','fach']},
-{n:13,t:'Excel-Formeln & Makros generieren',desc:'Beschreiben was die Formel tun soll → fertige Excel-Formel oder VBA-Makro.',tool:['ChatGPT'],m:'Mär 2023',c:'code',l:'★★★☆☆',r:['fach','admin']},
-{n:12,t:'Strukturierte Datenextraktion aus Fließtext',desc:'Aus unstrukturiertem Text (E-Mails, Berichte) extrahiert die KI strukturierte Daten in Tabellenform.',tool:['ChatGPT'],m:'Mär 2023',c:'text',l:'★★★☆☆',r:['fach','admin']},
-{n:11,t:'Lernhilfe & Erklärung komplexer Sachverhalte',desc:'KI erklärt auf dem gewünschten Niveau — vom Einsteiger bis Fachexperte. Wie ein persönlicher Tutor.',tool:['ChatGPT','Claude','Gemini'],m:'Mär 2023',c:'text',l:'★★★☆☆',r:['cxo','lead','fach','dev','admin']},
-{n:10,t:'Juristische & fachliche Textentwürfe',desc:'Erste Entwürfe für Verträge, AGB, Datenschutzerklärungen — nicht als Rechtsberatung, aber als Arbeitsgrundlage.',tool:['ChatGPT','Claude'],m:'Mär 2023',c:'text',l:'★★★☆☆',r:['lead','fach']},
-{n:9,t:'Komplexe mehrseitige Texte (Berichte, Konzepte)',desc:'Statt stundenlangem Schreiben liefert die KI einen gut strukturierten Erstentwurf für Berichte und Konzeptpapiere.',tool:['ChatGPT','Claude'],m:'Mär 2023',c:'text',l:'★★★☆☆',r:['lead','fach']},
-{n:8,t:'Erste Bildgenerierung aus Text',desc:'Faszinierend, aber oft verzerrt (Hände, Gesichter). Für Inspiration gut, für professionelle Nutzung noch nicht.',tool:['Bildgenerierung (weitere)','Midjourney'],m:'Nov 2022',c:'bild',l:'★☆☆☆☆',r:['fach','mktg']},
-{n:7,t:'Kurze Textzusammenfassungen',desc:'Langen Artikel reinkopieren → in Sekunden eine prägnante Zusammenfassung. Der schnellste Überblick.',tool:['ChatGPT'],m:'Nov 2022',c:'text',l:'★★☆☆☆',r:['cxo','lead','fach','admin']},
-{n:6,t:'Übersetzungen erstellen',desc:'Kontextbewusst übersetzen — oft besser als bisherige Tools, besonders bei Nuancen und Fachsprache.',tool:['ChatGPT'],m:'Nov 2022',c:'text',l:'★★☆☆☆',r:['fach','admin']},
-{n:5,t:'Einfachen Code generieren & debuggen',desc:'Einfache Skripte und Bugfixes beschreiben → funktionierender Code. Produktivitätsschub für Entwickler.',tool:['ChatGPT','Coding-Tools'],m:'Nov 2022',c:'code',l:'★★☆☆☆',r:['dev']},
-{n:4,t:'Kurze kreative Texte (Social Posts, Slogans)',desc:'Social-Media-Posts, Werbetexte und Slogans in Sekunden — in verschiedenen Tonalitäten und Sprachen.',tool:['ChatGPT'],m:'Nov 2022',c:'text',l:'★★☆☆☆',r:['fach','mktg','admin']},
-{n:3,t:'Wissensfragen beantworten',desc:'Direkte, zusammengefasste Antworten auf faktische Fragen — allerdings anfangs ohne Quellengarantie.',tool:['ChatGPT'],m:'Nov 2022',c:'text',l:'★★☆☆☆',r:['cxo','lead','fach','dev','admin']},
-{n:2,t:'Brainstorming & Ideenfindung',desc:'KI als Sparringspartner: Ideen sammeln, Perspektiven durchspielen — jederzeit verfügbar und unvoreingenommen.',tool:['ChatGPT'],m:'Nov 2022',c:'text',l:'★★☆☆☆',r:['cxo','lead','fach']},
-{n:1,t:'Einfache Texte umformulieren (E-Mails)',desc:'Hastige E-Mail eingeben → professionell formulierte Version. Höflicher, klarer, grammatisch korrekt.',tool:['ChatGPT'],m:'Nov 2022',c:'text',l:'★★☆☆☆',r:['lead','fach','admin']}
-];
-
-// State
-let activeRole = 'all';
-let activeCat = 'all';
-
-// Render filters
-function renderFilters() {
-  const rf = document.getElementById('role-filters');
-  Object.entries(ROLE_LABELS).forEach(([id, label]) => {
-    const p = document.createElement('span');
-    p.className = 'filter-pill' + (id === 'all' ? ' active' : '');
-    p.dataset.r = id;
-    if (id !== 'all' && ROLE_SVG[id]) {
-      p.innerHTML = '<span class="filter-pill-icon" style="width:14px;height:14px;">' + ROLE_SVG[id] + '</span>' + label;
-    } else { p.textContent = label; }
-    p.onclick = () => { activeRole = id; updateFilters(); };
-    rf.appendChild(p);
-  });
-  const cf = document.getElementById('cat-filters');
-  [{id:'all',label:'Alle'},...Object.entries(CAT_LABELS).map(([id,label])=>({id,label}))].forEach(c => {
-    const p = document.createElement('span');
-    p.className = 'filter-pill' + (c.id === 'all' ? ' active' : '');
-    p.dataset.c = c.id;
-    p.textContent = c.label;
-    p.onclick = () => { activeCat = c.id; updateFilters(); };
-    cf.appendChild(p);
-  });
-}
-
-function updateFilters() {
-  document.querySelectorAll('[data-r]').forEach(p => p.classList.toggle('active', p.dataset.r === activeRole));
-  document.querySelectorAll('.filter-pill[data-c]').forEach(p => p.classList.toggle('active', p.dataset.c === activeCat));
-  let count = 0;
-  document.querySelectorAll('.entry').forEach(e => {
-    const matchCat = activeCat === 'all' || e.dataset.c === activeCat;
-    const matchRole = activeRole === 'all' || e.dataset.roles.includes(activeRole);
-    const show = matchCat && matchRole;
-    e.classList.toggle('hidden', !show);
-    if (!show) e.classList.remove('open');
-    if (show) count++;
-  });
-  document.getElementById('counter').innerHTML = `<b>${count}</b> von 56 Einträgen sichtbar`;
-
-  const rd = document.getElementById('role-desc');
-  if (activeRole !== 'all' && ROLE_DESCRIPTIONS[activeRole]) {
-    const icon = ROLE_SVG[activeRole] || '';
-    rd.innerHTML = `<div class="role-desc-title"><span style="width:18px;height:18px;display:inline-block">${icon}</span>${ROLE_LABELS[activeRole]}</div><p class="role-desc-text">${ROLE_DESCRIPTIONS[activeRole]}</p>`;
-    rd.classList.add('visible');
-  } else {
-    rd.classList.remove('visible');
-    setTimeout(() => { if (!rd.classList.contains('visible')) rd.innerHTML = ''; }, 350);
-  }
-}
-
-function openModel(name) {
-  const m = MODEL_TIMELINES[name]; if (!m) return;
-  const panel = document.getElementById('overlay-panel');
-  let h = `<span class="overlay-close" onclick="closeOverlay()">&times;</span>`;
-  h += `<h3>${name}</h3><p class="overlay-desc">${m.desc}</p>`;
-  h += `<table class="model-table"><thead><tr><th>Datum</th><th>Release</th><th>Bedeutung</th></tr></thead><tbody>`;
-  m.entries.forEach(e => { h += `<tr><td class="date-col">${e.d}</td><td class="name-col">${e.t}</td><td class="desc-col">${e.h}</td></tr>`; });
-  h += '</tbody></table>';
-  panel.innerHTML = h;
-  document.getElementById('overlay').classList.add('visible');
-}
-function closeOverlay() { document.getElementById('overlay').classList.remove('visible'); }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
-
-function renderTimeline() {
-  const tl = document.getElementById('tl');
-  let lastMonth = '', phaseIdx = 0;
-
-  DATA.forEach(d => {
-    while (phaseIdx < PHASES.length && PHASES[phaseIdx].month === d.m) {
-      const ph = PHASES[phaseIdx];
-      if (d.m !== lastMonth) {
-        tl.insertAdjacentHTML('beforeend', `<div class="month-marker"><div class="month-label">${d.m}</div><div class="month-dot"></div></div>`);
-        lastMonth = d.m;
-      }
-      tl.insertAdjacentHTML('beforeend', `<div class="phase"><div class="phase-title">${ph.title}</div><div class="phase-sub">${ph.sub}</div></div>`);
-      phaseIdx++;
-    }
-    if (d.m !== lastMonth) {
-      tl.insertAdjacentHTML('beforeend', `<div class="month-marker"><div class="month-label">${d.m}</div><div class="month-dot"></div></div>`);
-      lastMonth = d.m;
-    }
-
-    const toolChips = d.tool.map(t => `<span class="tool-chip" onclick="event.stopPropagation();openModel('${t}')">${t}</span>`).join(' ');
-    const roleDots = d.r.map(r => `<span class="role-icon" data-r="${r}" title="${ROLE_LABELS[r]}" style="width:14px;height:14px;opacity:.55">${ROLE_SVG[r]}</span>`).join('');
-    const roleNames = d.r.map(r => ROLE_LABELS[r]).join(', ');
-
-    const el = document.createElement('div');
-    el.className = 'entry';
-    el.dataset.c = d.c;
-    el.dataset.roles = d.r.join(',');
-    el.innerHTML = `
-      <div class="entry-head">
-        <span class="entry-nr">${d.n}</span>
-        <span class="entry-title">${d.t}</span>
-        <div class="entry-badges">
-          <div class="role-icons">${roleDots}</div>
-          <span class="cat-tag" data-c="${d.c}">${CAT_LABELS[d.c]}</span>
-        </div>
-      </div>
-      <div class="entry-detail">
-        <div class="entry-desc">${d.desc}</div>
-        <div class="entry-tools"><span class="entry-tools-label">Tools:</span> ${toolChips}</div>
-        <div class="entry-level">${d.l}</div>
-        <div class="entry-roles-detail">Relevant für: ${roleNames}</div>
-      </div>`;
-    el.onclick = () => el.classList.toggle('open');
-    tl.appendChild(el);
-  });
-}
-
-renderFilters();
-renderTimeline();
-updateFilters();
+render();
 </script>
 </body>
 </html>
