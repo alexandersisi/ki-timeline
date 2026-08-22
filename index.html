@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>KI-Timeline | plan a · AI Solutions</title>
-<meta name="description" content="Interaktive Timeline der wichtigsten KI-Releases von ChatGPT, Gemini, Claude, Mistral, Meta & Copilot. Januar 2025 bis Juli 2026, 94 Meilensteine — nicht jedes Update, sondern die, die den Arbeitsalltag verändern.">
+<meta name="description" content="Interaktive Timeline der wichtigsten KI-Releases von ChatGPT, Gemini, Claude, Mistral, Meta & Copilot. Januar 2025 bis August 2026, 103 Meilensteine — nicht jedes Update, sondern die, die den Arbeitsalltag verändern.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -62,17 +62,6 @@ a{color:inherit;text-decoration:none}
 .hbtn svg{width:16px;height:16px}
 
 /* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:8px 0 4px}
-.stat{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
-.stat.hl{background:linear-gradient(135deg,#0a1611,#143a26);border-color:#143a26}
-.stat.hl .stat-n,.stat.hl .stat-l{color:#fff}
-.stat.hl .stat-l{color:#9be8bd}
-.stat-ic{width:44px;height:44px;border-radius:11px;background:rgba(46,173,96,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.stat.hl .stat-ic{background:rgba(255,255,255,.12)}
-.stat-ic svg{width:22px;height:22px;stroke:var(--green-dd)}
-.stat.hl .stat-ic svg{stroke:#7ee0a6}
-.stat-n{font-size:26px;font-weight:900;line-height:1;letter-spacing:-.02em}
-.stat-l{font-size:13px;color:var(--muted);margin-top:3px;font-weight:500}
 
 /* FILTERS */
 .filters{margin:26px 0 6px}
@@ -169,14 +158,11 @@ a{color:inherit;text-decoration:none}
 .ft p{font-size:13px;color:var(--muted)}
 
 @media(max-width:860px){
- .stats{grid-template-columns:1fr 1fr}
  .tgrid{grid-template-columns:1fr}
  .hero{margin:16px}.hero-in{padding:40px 28px}
  .brand-by{display:none}
 }
 @media(max-width:560px){
- .stats{grid-template-columns:1fr 1fr;gap:10px}
- .stat{padding:14px;gap:10px}.stat-ic{width:38px;height:38px}.stat-n{font-size:22px}
  .flab{width:100%}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -198,8 +184,8 @@ a{color:inherit;text-decoration:none}
  <div class="hero-bg"></div>
  <div class="hero-in">
   <div class="hero-pills">
-   <span class="hpill">Januar 2025 — Juli 2026</span>
-   <span class="hpill g"><span id="hero-count">94</span> Meilensteine</span>
+   <span class="hpill">Januar 2025 — August 2026</span>
+   <span class="hpill g"><span id="hero-count">103</span> Meilensteine</span>
   </div>
   <h1>Die Entwicklung der KI — <em>und was sie für unsere Arbeitswelt bedeutet</em></h1>
   <p class="hero-sub">Eine interaktive Timeline der wichtigsten Releases von ChatGPT, Gemini, Claude, Mistral, Meta &amp; Copilot. Nicht jedes Update — sondern die Meilensteine, die den Arbeitsalltag verändern.</p>
@@ -211,13 +197,6 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <div class="ctr">
- <div class="stats">
-  <div class="stat"><span class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg></span><div><div class="stat-n" id="stat-count">94</div><div class="stat-l">Meilensteine</div></div></div>
-  <div class="stat"><span class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><div><div class="stat-n" id="stat-prov">6</div><div class="stat-l">KI-Anbieter</div></div></div>
-  <div class="stat"><span class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span><div><div class="stat-n">19</div><div class="stat-l">Monate</div></div></div>
-  <div class="stat hl"><span class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></span><div><div class="stat-n">95%</div><div class="stat-l">Rollen betroffen</div></div></div>
- </div>
-
  <div class="filters">
   <div class="frow"><span class="flab">Anbieter</span><div id="pf" style="display:flex;gap:8px;flex-wrap:wrap"></div></div>
   <div class="frow"><span class="flab">Kategorie</span><div id="tf" style="display:flex;gap:8px;flex-wrap:wrap"></div></div>
@@ -243,11 +222,20 @@ a{color:inherit;text-decoration:none}
 
 <footer class="ft"><div class="ctr ft-in">
  <p><a href="https://www.plan-a-consulting.ai">plan a</a> · Beratung für Organisations- und Personalentwicklung</p>
- <p>Zuletzt aktualisiert: 21. Juli 2026</p>
+ <p>Zuletzt aktualisiert: 22. August 2026</p>
 </div></footer>
 
 <script>
 const D=[
+// ─── AUG 2026 ───
+{m:"AUG 2026",p:"ChatGPT",t:"GPT-5.6 Luna & Sol — unbegrenzte Text-Chats für alle",s:"Luna wird Standardmodell für Free und Go, der Think-Button kehrt zurück, Plus und Pro bekommen einen Regler für die Denktiefe",g:["Modell","Workflow"],w:"OpenAI hob am 6.\u00A0August die Textlimits für alle ChatGPT-Nutzer auf. GPT-5.6 Luna löst GPT-5.5 als Standardmodell für Free und Go ab und bringt den Think-Button zurück, mit dem sich pro Frage mehr Rechenzeit zuschalten lässt. Plus und Pro erhalten ein überarbeitetes GPT-5.6 Sol samt Regler für die Denktiefe; laut OpenAI enthalten Antworten 62\u00A0% seltener mindestens einen Faktenfehler als bei GPT-5.5 Instant.",n:"Wer ChatGPT bisher nur gelegentlich nutzte, stößt nicht mehr an Kontingente — und entscheidet über den Think-Button selbst, ob eine Frage eine schnelle oder eine gründliche Antwort braucht."},
+{m:"AUG 2026",p:"ChatGPT",t:"Computer History & Google Drive in der Library",s:"ChatGPT liest die eigene Mac-Arbeit als Kontext mit und greift ohne Upload auf Drive-Dateien zu",g:["Kontext","Workflow"],w:"Am 13.\u00A0August startete OpenAI Computer History für die macOS-App: eine durchsuchbare Chronik der Aktivitäten in freigegebenen Apps und Websites, auf die ChatGPT und Codex als Kontext zugreifen. Erfasst werden Interaktionsereignisse, keine Screenshots, Bildschirmaufnahmen oder Mikrofondaten; die Funktion ist standardmäßig aus und zunächst auf US-Konten der Tarife Pro, Business und Enterprise beschränkt. Parallel erschien Google Drive in der Library — Drive-Dateien lassen sich per @-Erwähnung in Chats ziehen, ohne sie erneut hochzuladen.",n:"Der Drive-Zugriff spart den Upload-Umweg bei Dokumenten. Computer History reicht deutlich weiter: bevor sie im Unternehmen aktiviert wird, gehört sie durch Datenschutz und Mitbestimmung geprüft."},
+{m:"AUG 2026",p:"Gemini",t:"Gemini 3.7 Flash — das schnelle Arbeitspferd zum halben Preis",s:"Deutlicher Sprung beim Programmieren, 1-Mio-Token-Kontext, Einführungspreis bis Jahresende",g:["Modell","Coding"],w:"Google veröffentlichte Gemini 3.7 Flash am 13.\u00A0August — nur drei Wochen nach Gemini 3.6 Flash. Im Coding-Benchmark DeepSWE v1.1 steigt die Trefferquote von 49,0\u00A0% auf 65,3\u00A0%; das Modell behält ein Kontextfenster von einer Million Token und bis zu 64.000 Ausgabe-Token. Der API-Einführungspreis liegt bis zum 31.\u00A0Dezember 2026 bei 0,75\u00A0$ pro Million Eingabe-Token und damit auf der Hälfte des 3.6-Flash-Tarifs.",n:"Für Routineaufgaben in hoher Stückzahl — Auswertungen, Zusammenfassungen, Code-Entwürfe — sinken die Kosten spürbar, bei besserer Qualität als beim Vorgänger."},
+{m:"AUG 2026",p:"Gemini",t:"Eine Milliarde Nutzer — und das Ende von Google Assistant",ms:"Assistant-Ablösung auf Android",s:"Gemini ersetzt ab 4.\u00A0September den Assistant auf Android; Omni Flash erzeugt Videos im Dialog",g:["Workflow","Multimodal"],w:"Die Gemini-App überschritt am 11.\u00A0August die Marke von einer Milliarde monatlicher Nutzer. Google bestätigte zugleich, dass Gemini ab dem 4.\u00A0September 2026 den Google Assistant auf Android vollständig ersetzt. Ergänzend zeigte Google mit Gemini Omni Flash ein Videomodell, mit dem sich Clips im Gespräch erzeugen und bearbeiten lassen.",n:"Wer ein Android-Gerät nutzt, bekommt den Wechsel ohne eigenes Zutun: Sprachbefehle, Routinen und Smart-Home-Steuerung laufen ab September über Gemini und verhalten sich anders als gewohnt."},
+{m:"AUG 2026",p:"Claude",t:"Wasserzeichen in allen Textausgaben — der EU AI Act wird sichtbar",ms:"Kennzeichnungspflicht in der Praxis",s:"Unsichtbare Markierung im Text, signierte Herkunftsdaten in Dateien, weltweit über alle Claude-Produkte",g:["Workflow"],w:"Anthropic kündigte am 11.\u00A0August an, Ausgaben neuer Claude-Modelle mit unsichtbaren Wasserzeichen zu versehen und erzeugte Dateien mit signierten Herkunftsdaten auszustatten. Die Markierung gilt weltweit über API, Claude, Claude Code, Cowork und Claude Tag hinweg, bleibt beim Kopieren erhalten und übersteht laut Anthropic auch leichte Überarbeitungen. Auslöser sind die seit dem 2.\u00A0August geltenden Kennzeichnungspflichten des EU AI Act; ein Erkennungs-API ist angekündigt.",n:"Das Wasserzeichen belegt, dass ein Text durch Claude gelaufen ist — nicht, wer ihn verfasst hat. Für interne Regelungen zum KI-Einsatz ist dieser Unterschied entscheidend, bevor daraus Kontrollpraxis wird."},
+{m:"AUG 2026",p:"Claude",t:"Cowork jetzt im Browser und auf dem Smartphone",s:"Sitzungen laufen in einer Beta remote, Dateien und Stände synchronisieren über das Claude-Konto",g:["Agent","Workflow"],w:"Anthropics Arbeitsumgebung Cowork ist seit August zusätzlich zur Desktop-App im Web und auf mobilen Geräten verfügbar. Sitzungen lassen sich in einer Beta remote ausführen; Dateien und Sitzungsstand liegen im Claude-Konto und werden über alle Geräte hinweg synchronisiert.",n:"Eine angestoßene Aufgabe lässt sich unterwegs weiterverfolgen, statt an den Rechner gebunden zu sein, auf dem sie gestartet wurde."},
+{m:"AUG 2026",p:"Mistral",t:"Mistral OCR 4 — Dokumente mit Positionen und Konfidenzwerten",s:"Bounding Boxes, Blockklassifikation, 170 Sprachen, in einem Container vollständig selbst hostbar",g:["Multimodal","Workflow"],w:"Mistral veröffentlichte im August Mistral OCR 4. Das Modell liefert neben dem erkannten Text auch Bounding Boxes, eine Klassifikation der Textblöcke und Konfidenzwerte pro Stelle. Es unterstützt 170 Sprachen aus zehn Sprachgruppen und läuft in einem einzigen Container, also vollständig in der eigenen Infrastruktur.",n:"Für Unterlagen, die das Haus nicht verlassen dürfen — Personalakten, Verträge, technische Dokumentation — wird die Digitalisierung ohne Cloud-Anbindung praktikabel. Die Konfidenzwerte zeigen, welche Stellen ein Mensch nachprüfen sollte."},
+{m:"AUG 2026",p:"Copilot",t:"August-Welle: Cowork-Anbindung, Notebooks für alle, Meeting-Vorbereitung",s:"Acht neue Funktionen; im Hintergrund wählt Copilot je nach Aufgabe zwischen GPT-5.6 und Claude",g:["Workflow","Agent"],w:"Microsoft lieferte im August acht Neuerungen für Microsoft 365 Copilot aus. Copilot Notebooks stehen nun allen Nutzern offen, eine Cowork-Anbindung erlaubt eigene Workflows auf Basis interner Daten, und das klassische Outlook für Windows bereitet Termine in Echtzeit auf — mit Kontext, offenen Punkten und passenden Dokumenten. Antworten können jetzt Bilder aus Dateien und Meetings enthalten; Copilot-Connectors durchsuchen Inhalte und Identitäten parallel und werden dadurch schneller.",n:"Die Meeting-Vorbereitung nimmt die Arbeit ab, vor jedem Termin Mails und Dateien zusammenzusuchen. Notebooks für alle heißt: Recherche und Entwurf landen nicht mehr verstreut in einzelnen Chats."},
 // ─── JUL 2026 ───
 {m:"JUL 2026",p:"ChatGPT",t:"GPT-5.6 & ChatGPT Work — KI übernimmt die Arbeitsdokumente",s:"Drei Modellvarianten (Sol, Luna, Terra) plus neues Work-Tool, das aus verbundenen Apps Dokumente, Tabellen und Präsentationen erzeugt",g:["Modell","Workflow"],w:"OpenAI veröffentlichte am 9. Juli GPT-5.6 in drei Varianten: Sol als leistungsstärkste, Luna auf Geschwindigkeit ausgelegt und Terra als Ausgleich für den Arbeitsalltag. Zeitgleich startete ChatGPT Work, das auf GPT-5.6 aufsetzt, Kontext aus verbundenen Apps und Dateien zusammenzieht und daraus Dokumente, Tabellen und Präsentationen erstellt.",n:"Der Sprung vom Antwortgeber zum Ergebnislieferant: ChatGPT baut fertige Arbeitsdokumente aus den Daten, die ohnehin im Unternehmen liegen."},
 {m:"JUL 2026",p:"ChatGPT",t:"GPT-Live-1 — Sprachmodelle, die gleichzeitig hören und sprechen",s:"Full-Duplex-Modelle mit natürlichem Turn-Taking, Unterbrechen und Live-Übersetzung",g:["Multimodal","Modell"],w:"OpenAI stellte am 8. Juli die Sprachmodelle GPT-Live-1 und GPT-Live-1 mini vor. Sie arbeiten im Full-Duplex-Betrieb, hören und sprechen also gleichzeitig. Nutzer können natürlich unterbrechen, der Sprecherwechsel wirkt weniger abgehackt, und Live-Übersetzung wird möglich.",n:"Sprach-KI verliert das Funkgeräte-Gefühl — brauchbar für echte Gespräche, Telefonate und mehrsprachige Meetings."},
@@ -255,6 +243,7 @@ const D=[
 {m:"JUL 2026",p:"Claude",t:"Fable 5 wieder verfügbar & neues Memory-System",s:"Exportauflage aufgehoben, Modell global zurück; Gedächtnis arbeitet mit einzelnen Einträgen statt Tageszusammenfassung",g:["Modell","Kontext"],w:"Nach dem Export-Stopp im Juni ist Claude Fable 5 seit dem 1. Juli wieder global verfügbar — auf Claude.ai, in der API, in Claude Code und Cowork. Zeitgleich stellte Anthropic das Gedächtnis um: statt einer täglichen Zusammenfassung führt Claude jetzt einzelne, kategorisierte Einträge, die es während der Gespräche liest und aktualisiert.",n:"Das Spitzenmodell ist zurück im Werkzeugkasten — und das Gedächtnis wird nachvollziehbar, weil einzelne Einträge einsehbar und korrigierbar sind."},
 {m:"JUL 2026",p:"Copilot",t:"Claude in Copilot Chat & Notebook-Export nach Office",s:"Claude als wählbares Modell, Notebooks nach PowerPoint/Word/Excel exportieren, Agent Store für interne Agenten",g:["Modell","Workflow"],w:"Microsoft machte Claude als Modelloption in Copilot Chat verfügbar — wählbar für komplexe Analysen, Dokumentenverständnis und strukturierte Inhalte. Dazu kamen im Juli der Export von Copilot Notebooks nach PowerPoint, Word und Excel, Mind Maps sowie ein Agent Store, in dem selbst gebaute Agenten nach Admin-Freigabe unternehmensweit auffindbar werden.",n:"Modellwahl wird zur bewussten Entscheidung im Arbeitsalltag — und intern gebaute Agenten verlassen die Bastelecke und werden für Kollegen nutzbar."},
 {m:"JUL 2026",p:"Copilot",t:"Edit with Copilot in Excel & interaktive Reports aus SharePoint",s:"Copilot baut und ändert Workbooks mit Tabellen, Charts und PivotTables; SharePoint-Inhalte werden zu HTML-Reports",g:["Workflow"],w:"Mit „Edit with Copilot“ in Excel erstellt und verändert Copilot ganze Arbeitsmappen und nutzt dabei echte Excel-Werkzeuge wie Tabellen, Diagramme, PivotTables und Formeln. In SharePoint baut Copilot aus vorhandenen Inhalten interaktive HTML-Reports, die sich direkt teilen lassen.",n:"Datenarbeit ohne Formel-Frickelei und Readouts ohne Layout-Abend: Copilot liefert nutzbare Artefakte statt Textvorschläge."},
+{m:"JUL 2026",p:"Claude",t:"Claude Opus 5 — neues Flaggschiff für den Alltag",s:"Löst Sonnet 5 als Allzweckmodell ab und schließt eine dichte Release-Folge im Sommer",g:["Modell"],w:"Anthropic veröffentlichte Claude Opus 5 am 24.\u00A0Juli. Das Modell wird zum neuen Allzweck-Flaggschiff und reiht sich hinter Sonnet 5 vom 30.\u00A0Juni sowie der Rückkehr von Fable 5 und Mythos 5 am 1.\u00A0Juli in eine ungewöhnlich dichte Release-Folge ein.",n:"Für anspruchsvolle Aufgaben — lange Dokumente, mehrstufige Analysen, komplexe Entwürfe — steht das jeweils stärkste Modell bereit, ohne dass Nutzer die Modellwahl selbst treffen müssen."},
 // ─── JUN 2026 ───
 {m:"JUN 2026",p:"Gemini",t:"Pixel Drop & Android 17 — Gemini wird zum Alltagswerkzeug",s:"Gemini Omni bearbeitet Videos im Gespräch, Lyria 3 macht Musik per Text, bessere Echtzeit-Übersetzung",g:["Multimodal","Workflow"],w:"Mit Android 17 und dem Juni-Pixel-Drop kamen neue KI-Funktionen direkt aufs Smartphone. Gemini Omni bearbeitet Videos im laufenden Gespräch, Lyria 3 erzeugt Musikstücke aus einer Textbeschreibung, und die Sprach-zu-Sprach-Übersetzung wurde spürbar besser.",n:"KI verlässt die Chat-Oberfläche und wird zur normalen Geräte-Funktion — Erstellen und Übersetzen ohne Extra-App."},
 {m:"JUN 2026",p:"ChatGPT",t:"ChatGPT „Dreaming“ — ein Gedächtnis, das mitdenkt",s:"Neues Langzeitgedächtnis merkt sich Vorlieben besser und hält den Faden über viele Gespräche hinweg",g:["Kontext","Workflow"],w:"OpenAI führte mit „Dreaming“ ein neues Gedächtnissystem für ChatGPT ein. Es merkt sich Vorlieben zuverlässiger und hält den Zusammenhang über viele Unterhaltungen hinweg frisch, statt bei jedem Start fast bei null zu beginnen.",n:"Weniger Wiederholen, mehr Anschluss: ChatGPT wird vom Frage-Antwort-Tool zum durchgehenden Arbeitsbegleiter."},
@@ -494,8 +483,6 @@ function renderTrends(){
 }
 
 document.getElementById("hero-count").textContent=D.length;
-document.getElementById("stat-count").textContent=D.length;
-document.getElementById("stat-prov").textContent=P.length;
 renderTabs();renderBand();renderTrends();render();
 </script>
 </body>
